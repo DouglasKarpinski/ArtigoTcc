@@ -1,0 +1,10 @@
+C:\Users\Douglas.Karpinski\Documents\Visual Studio 2017\Projects\Noticias\Noticias\bin\Debug\netcoreapp1.1\Noticias.deps.json
+C:\Users\Douglas.Karpinski\Documents\Visual Studio 2017\Projects\Noticias\Noticias\bin\Debug\netcoreapp1.1\Noticias.runtimeconfig.json
+C:\Users\Douglas.Karpinski\Documents\Visual Studio 2017\Projects\Noticias\Noticias\bin\Debug\netcoreapp1.1\Noticias.runtimeconfig.dev.json
+C:\Users\Douglas.Karpinski\Documents\Visual Studio 2017\Projects\Noticias\Noticias\obj\Debug\netcoreapp1.1\UserSecretsAssemblyInfo.cs
+C:\Users\Douglas.Karpinski\Documents\Visual Studio 2017\Projects\Noticias\Noticias\obj\Debug\netcoreapp1.1\Noticias.AssemblyInfo.cs
+C:\Users\Douglas.Karpinski\Documents\Visual Studio 2017\Projects\Noticias\Noticias\bin\Debug\netcoreapp1.1\Noticias.dll
+C:\Users\Douglas.Karpinski\Documents\Visual Studio 2017\Projects\Noticias\Noticias\bin\Debug\netcoreapp1.1\Noticias.pdb
+C:\Users\Douglas.Karpinski\Documents\Visual Studio 2017\Projects\Noticias\Noticias\obj\Debug\netcoreapp1.1\Noticias.dll
+C:\Users\Douglas.Karpinski\Documents\Visual Studio 2017\Projects\Noticias\Noticias\obj\Debug\netcoreapp1.1\Noticias.pdb
+C:\Users\Douglas.Karpinski\Documents\Visual Studio 2017\Projects\Noticias\Noticias\obj\Debug\netcoreapp1.1\Noticias.csprojResolveAssemblyReference.cache
