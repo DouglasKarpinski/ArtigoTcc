@@ -8,9 +8,10 @@ using Noticias.Data;
 namespace Noticias.Data.Migrations
 {
     [DbContext(typeof(DBNoticias))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170630135337_UnidadeNegocio")]
+    partial class UnidadeNegocio
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")

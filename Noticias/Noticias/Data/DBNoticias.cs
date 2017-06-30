@@ -6,7 +6,6 @@ namespace Noticias.Data
 {
     public class DBNoticias : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Categoria> Categorias { get; set; }
             
         
         public DBNoticias(DbContextOptions<DBNoticias> options)
@@ -18,5 +17,10 @@ namespace Noticias.Data
         {
             base.OnModelCreating(builder);
         }
+
+
+        public DbSet<Categoria> Categorias { get; set; }
+
+        public DbSet<UnidadeNegocio> UnidadeNegocio { get; set; }
     }
 }

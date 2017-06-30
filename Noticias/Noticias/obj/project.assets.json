@@ -10955,10 +10955,10 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Douglas.Karpinski\\Documents\\Visual Studio 2017\\Projects\\Noticias\\Noticias\\Noticias.csproj",
+      "projectUniqueName": "C:\\Users\\Douglas.Karpinski\\Documents\\tcc\\Noticias\\Noticias\\Noticias.csproj",
       "projectName": "Noticias",
-      "projectPath": "C:\\Users\\Douglas.Karpinski\\Documents\\Visual Studio 2017\\Projects\\Noticias\\Noticias\\Noticias.csproj",
-      "outputPath": "C:\\Users\\Douglas.Karpinski\\Documents\\Visual Studio 2017\\Projects\\Noticias\\Noticias\\obj\\",
+      "projectPath": "C:\\Users\\Douglas.Karpinski\\Documents\\tcc\\Noticias\\Noticias\\Noticias.csproj",
+      "outputPath": "C:\\Users\\Douglas.Karpinski\\Documents\\tcc\\Noticias\\Noticias\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"
