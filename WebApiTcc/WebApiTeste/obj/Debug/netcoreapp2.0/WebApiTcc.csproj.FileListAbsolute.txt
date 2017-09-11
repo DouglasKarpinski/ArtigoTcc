@@ -1,0 +1,11 @@
+C:\Users\Douglas.Karpinski\Documents\Visual Studio 2017\Projects\WebApiTeste\WebApiTeste\bin\Debug\netcoreapp2.0\WebApiTcc.deps.json
+C:\Users\Douglas.Karpinski\Documents\Visual Studio 2017\Projects\WebApiTeste\WebApiTeste\bin\Debug\netcoreapp2.0\WebApiTcc.runtimeconfig.json
+C:\Users\Douglas.Karpinski\Documents\Visual Studio 2017\Projects\WebApiTeste\WebApiTeste\bin\Debug\netcoreapp2.0\WebApiTcc.runtimeconfig.dev.json
+C:\Users\Douglas.Karpinski\Documents\Visual Studio 2017\Projects\WebApiTeste\WebApiTeste\bin\Debug\netcoreapp2.0\WebApiTcc.dll
+C:\Users\Douglas.Karpinski\Documents\Visual Studio 2017\Projects\WebApiTeste\WebApiTeste\bin\Debug\netcoreapp2.0\WebApiTcc.pdb
+C:\Users\Douglas.Karpinski\Documents\Visual Studio 2017\Projects\WebApiTeste\WebApiTeste\obj\Debug\netcoreapp2.0\WebApiTcc.csproj.CoreCompileInputs.cache
+C:\Users\Douglas.Karpinski\Documents\Visual Studio 2017\Projects\WebApiTeste\WebApiTeste\obj\Debug\netcoreapp2.0\WebApiTcc.AssemblyInfoInputs.cache
+C:\Users\Douglas.Karpinski\Documents\Visual Studio 2017\Projects\WebApiTeste\WebApiTeste\obj\Debug\netcoreapp2.0\WebApiTcc.AssemblyInfo.cs
+C:\Users\Douglas.Karpinski\Documents\Visual Studio 2017\Projects\WebApiTeste\WebApiTeste\obj\Debug\netcoreapp2.0\WebApiTcc.dll
+C:\Users\Douglas.Karpinski\Documents\Visual Studio 2017\Projects\WebApiTeste\WebApiTeste\obj\Debug\netcoreapp2.0\WebApiTcc.pdb
+C:\Users\Douglas.Karpinski\Documents\Visual Studio 2017\Projects\WebApiTeste\WebApiTeste\obj\Debug\netcoreapp2.0\WebApiTcc.csprojResolveAssemblyReference.cache
