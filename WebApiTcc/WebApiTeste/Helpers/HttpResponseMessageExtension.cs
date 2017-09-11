@@ -2,7 +2,7 @@
 using System;
 using System.Net;
 using System.Net.Http;
-using WebApiTeste.Models;
+using WebApiTcc.Models;
 
 namespace WebApiTeste.Helpers
 {

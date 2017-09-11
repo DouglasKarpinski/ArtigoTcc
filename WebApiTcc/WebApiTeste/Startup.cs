@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WebApiTeste.Application.Home;
+using WebApiTcc.Application.Home;
 
-namespace WebApiTeste
+namespace WebApiTcc
 {
     public class Startup
     {

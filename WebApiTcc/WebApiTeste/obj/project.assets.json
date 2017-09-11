@@ -12670,11 +12670,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Douglas.Karpinski\\Documents\\Visual Studio 2017\\Projects\\WebApiTeste\\WebApiTeste\\WebApiTcc.csproj",
+      "projectUniqueName": "C:\\Users\\Douglas.Karpinski\\Documents\\tcc\\WebApiTcc\\WebApiTeste\\WebApiTcc.csproj",
       "projectName": "WebApiTcc",
-      "projectPath": "C:\\Users\\Douglas.Karpinski\\Documents\\Visual Studio 2017\\Projects\\WebApiTeste\\WebApiTeste\\WebApiTcc.csproj",
+      "projectPath": "C:\\Users\\Douglas.Karpinski\\Documents\\tcc\\WebApiTcc\\WebApiTeste\\WebApiTcc.csproj",
       "packagesPath": "C:\\Users\\Douglas.Karpinski\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Douglas.Karpinski\\Documents\\Visual Studio 2017\\Projects\\WebApiTeste\\WebApiTeste\\obj\\",
+      "outputPath": "C:\\Users\\Douglas.Karpinski\\Documents\\tcc\\WebApiTcc\\WebApiTeste\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
 
-namespace WebApiTeste.Application.WebApiRequests
+namespace WebApiTcc.Application.WebApiRequests
 {
     public static class HttpClientBuilder
     {

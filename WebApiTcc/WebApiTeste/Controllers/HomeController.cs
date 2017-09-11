@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Diagnostics;
-using WebApiTeste.Application.Home;
-using WebApiTeste.Models;
+using WebApiTcc.Application.Home;
+using WebApiTcc.Models;
 
-namespace WebApiTeste.Controllers
+namespace WebApiTcc.Controllers
 {
     public class HomeController : Controller
     {

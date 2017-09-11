@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
-using WebApiTeste.Models;
+using WebApiTcc.Application.WebApiRequests;
+using WebApiTcc.Models;
 
 namespace WebApiTeste.Application
 {
@@ -13,7 +14,7 @@ namespace WebApiTeste.Application
         {
             //var url = $"{(Debugger.IsAttached ? "http://localhost" : ConfigurationManager.AppSettings["Url"])}:{ConfigurationManager.AppSettings["Port"]}/";
             var url = "http://localhost";
-            var response = new WebApiRequests.WebApiRequest(url).AddResource("parameters").Get();
+            var response = new WebApiRequest(url).AddResource("parameters").Get();
 
             _parameters = JsonConvert.DeserializeObject<Parameters>(response.Content.ReadAsStringAsync().Result);
             return _parameters;

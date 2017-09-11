@@ -1,7 +1,9 @@
-﻿using WebApiTeste.Helpers;
-using WebApiTeste.Models;
+﻿using WebApiTcc.Application.WebApiRequests;
+using WebApiTcc.Models;
+using WebApiTeste.Application;
+using WebApiTeste.Helpers;
 
-namespace WebApiTeste.Application.Home
+namespace WebApiTcc.Application.Home
 {
     public class HomeApplication : SharedApplication, IHomeApplication
     {
@@ -9,7 +11,7 @@ namespace WebApiTeste.Application.Home
 
         public Response Get()
         {
-            return new WebApiRequests.WebApiRequest("http://192.168.7.10:30019/")
+            return new WebApiRequest("http://192.168.7.10:30019/")
                 .AddResource(Api)
                 .Get()
                 .GetContent();

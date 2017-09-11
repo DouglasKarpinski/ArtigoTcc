@@ -1,4 +1,4 @@
-﻿namespace WebApiTeste.Models
+﻿namespace WebApiTcc.Models
 {
     public class Parameters
     {

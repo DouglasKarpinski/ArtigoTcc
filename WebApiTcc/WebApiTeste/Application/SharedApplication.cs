@@ -1,4 +1,6 @@
-﻿namespace WebApiTeste.Application
+﻿using WebApiTeste.Application;
+
+namespace WebApiTcc.Application
 {
     public class SharedApplication
     {

@@ -6,7 +6,7 @@ using System.Net.Http.Formatting;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace WebApiTeste.Application.WebApiRequests
+namespace WebApiTcc.Application.WebApiRequests
 {
     public class WebApiRequest
     {

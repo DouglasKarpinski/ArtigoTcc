@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace WebApiTeste.ViewModel.Seguranca
+﻿namespace WebApiTcc.ViewModel.Seguranca
 {
     public class UsuarioLogado
     {
+        public int Id { get; set; }
     }
 }

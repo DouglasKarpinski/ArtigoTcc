@@ -1,6 +1,4 @@
-using System;
-
-namespace WebApiTeste.Models
+namespace WebApiTcc.Models
 {
     public class ErrorViewModel
     {

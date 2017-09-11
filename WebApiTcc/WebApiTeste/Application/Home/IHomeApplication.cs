@@ -1,6 +1,6 @@
-﻿using WebApiTeste.Models;
+﻿using WebApiTcc.Models;
 
-namespace WebApiTeste.Application.Home
+namespace WebApiTcc.Application.Home
 {
     public interface IHomeApplication
     {
