@@ -3,16 +3,19 @@ using System;
 using System.Diagnostics;
 using WebApiTcc.Application.Home;
 using WebApiTcc.Models;
+using WebApiTcc.Services.Home;
 
 namespace WebApiTcc.Controllers
 {
     public class HomeController : Controller
     {
         private readonly IHomeApplication _homeApplication;
+        private readonly IHomeServices _homeServices;
 
-        public HomeController(IHomeApplication homeApplication)
+        public HomeController(IHomeApplication homeApplication, IHomeServices homeServices)
         {
             _homeApplication = homeApplication;
+            _homeServices = homeServices;
         }
 
         public ActionResult Index()
@@ -43,9 +46,14 @@ namespace WebApiTcc.Controllers
         {
             try
             {
+                //testa api externa
                 var retorno = _homeApplication.Get();
                 if (!retorno.IsSuccess)
                     return Error();
+
+                //testa banco azure
+                var retornoData = _homeServices.Get();
+
 
                 return null;
             }

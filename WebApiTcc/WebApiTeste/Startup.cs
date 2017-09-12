@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebApiTcc.Application.Home;
+using WebApiTcc.Repository.Home;
+using WebApiTcc.Services.Home;
 
 namespace WebApiTcc
 {
@@ -19,6 +21,9 @@ namespace WebApiTcc
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IHomeApplication, HomeApplication>();
+            services.AddSingleton<IHomeServices, HomeServices>();
+            services.AddSingleton<IHomeRepository, HomeRepository>();
+
             services.AddMvc();
         }
 
