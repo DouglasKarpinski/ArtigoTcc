@@ -4,7 +4,7 @@ using System.Net;
 using System.Net.Http;
 using WebApiTcc.Models;
 
-namespace WebApiTeste.Helpers
+namespace WebApiTcc.Helpers
 {
     public static class HttpResponseMessageExtension
     {

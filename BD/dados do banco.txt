@@ -1,0 +1,8 @@
+Database
+analisesatisfacao.database.windows.net
+
+User
+administrador
+
+Pass
+Adm123**

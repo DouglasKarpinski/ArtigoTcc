@@ -1,7 +1,6 @@
 ﻿using WebApiTcc.Application.WebApiRequests;
+using WebApiTcc.Helpers;
 using WebApiTcc.Models;
-using WebApiTeste.Application;
-using WebApiTeste.Helpers;
 
 namespace WebApiTcc.Application.Home
 {
