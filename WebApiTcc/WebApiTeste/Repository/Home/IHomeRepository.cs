@@ -1,4 +1,4 @@
-﻿using WebApiTcc.ViewModel;
+﻿using WebApiTcc.ViewModel.Home;
 
 namespace WebApiTcc.Repository.Home
 {

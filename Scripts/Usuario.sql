@@ -16,6 +16,11 @@ CREATE PROCEDURE [dbo].[SP_SelecionaUsuario]
 	*/
 
 	BEGIN
-		SELECT * FROM [dbo].[Usuario]
+		SELECT	IdUsuario,
+				Nome,
+				Senha,
+				Ativo,
+				IdGrupoEconomico
+			 FROM [dbo].[Usuario]
 	END
 GO

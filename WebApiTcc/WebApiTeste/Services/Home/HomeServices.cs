@@ -1,6 +1,6 @@
 ﻿using System;
 using WebApiTcc.Repository.Home;
-using WebApiTcc.ViewModel;
+using WebApiTcc.ViewModel.Home;
 
 namespace WebApiTcc.Services.Home
 {

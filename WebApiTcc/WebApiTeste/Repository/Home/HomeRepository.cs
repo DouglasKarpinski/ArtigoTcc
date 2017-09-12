@@ -1,5 +1,9 @@
-﻿using WebApiTcc.Helpers.DataBaseInvoker;
-using WebApiTcc.ViewModel;
+﻿using System.Collections.Generic;
+using System.Data;
+using WebApiTcc.Helpers;
+using WebApiTcc.Helpers.DataBaseInvoker;
+using WebApiTcc.ViewModel.Home;
+using WebApiTcc.ViewModel.Usuario;
 
 namespace WebApiTcc.Repository.Home
 {
@@ -10,7 +14,7 @@ namespace WebApiTcc.Repository.Home
 
         private enum Procedures
         {
-            
+            SP_SelecionaUsuario
         }
         public HomeRepository(IDatabaseInvoker databaseInvoker)
         {
@@ -19,7 +23,22 @@ namespace WebApiTcc.Repository.Home
 
         public HomeViewModel Get()
         {
-           _databaseInvoker.BeginNewStatement("");
+            var lst = new List<UsuarioViewModel>();
+            var home = new HomeViewModel();
+            _databaseInvoker.BeginNewStatement(Procedures.SP_SelecionaUsuario);
+            using (var reader = _databaseInvoker.ExecuteReader(CommandBehavior.Default))
+                while (reader.Read())
+                    lst.Add(new UsuarioViewModel(
+                        reader.ReadAsInt("IdUsuario"),
+                        reader.ReadAsString("Nome"),
+                        reader.ReadAsString("Senha"),
+                        reader.ReadAsBool("Ativo"),
+                        reader.ReadAsInt("IdGrupoEconomico")
+                        ));
+
+            home.Usuario = lst;
+
+            return home;
         }
     }
 }
