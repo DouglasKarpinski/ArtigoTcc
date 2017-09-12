@@ -4,7 +4,7 @@ using System.Data;
 
 namespace WebApiTcc.Helpers.DataBaseInvoker
 {
-    public class DatabaseInvoker
+    public class DatabaseInvoker : IDatabaseInvoker
     {
         protected IDbConnection _connection { get; }
         private IDbTransaction _transaction { get; set; }

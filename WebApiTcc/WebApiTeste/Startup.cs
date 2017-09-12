@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebApiTcc.Application.Home;
+using WebApiTcc.Helpers.DataBaseInvoker;
 using WebApiTcc.Repository.Home;
 using WebApiTcc.Services.Home;
 
@@ -20,11 +21,13 @@ namespace WebApiTcc
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
+
+            services.AddSingleton<IDatabaseInvoker, DatabaseInvoker>();
             services.AddSingleton<IHomeApplication, HomeApplication>();
             services.AddSingleton<IHomeServices, HomeServices>();
             services.AddSingleton<IHomeRepository, HomeRepository>();
 
-            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
