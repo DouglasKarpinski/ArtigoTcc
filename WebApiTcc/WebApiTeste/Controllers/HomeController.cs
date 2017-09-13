@@ -1,6 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using RestSharp;
 using System;
 using System.Diagnostics;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using WebApiTcc.Application.Home;
 using WebApiTcc.Models;
 using WebApiTcc.Services.Home;
@@ -42,18 +48,65 @@ namespace WebApiTcc.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public ActionResult Get()
+       
+
+        public async Task<IActionResult> Get()
         {
             try
             {
-                //testa api externa
-                var retorno = _homeApplication.Get();
-                if (!retorno.IsSuccess)
-                    return Error();
+                string retValue = "";
+                using (var client = new HttpClient())
+                {
+                    var ecomerce = "http://localhost:30019";
+                    var resourceEcommerce = "api/ping";
 
-                //testa banco azure
-                var retornoData = _homeServices.Get();
+                    var azure = "http://emotionwebapi.azurewebsites.net";
+                    var resourceAzure = "api/emotion";
 
+                    client.BaseAddress = new Uri(azure);
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    HttpResponseMessage response = await client.GetAsync(resourceAzure);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        retValue = await response.Content.ReadAsStringAsync();
+                    }
+                }
+                return View("Index", retValue);
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public JsonResult GetUser(string logon, string senha)
+        {
+            try
+            {
+                var client = new RestClient("http://localhost:30019");
+                var request = new RestRequest("api/token/", Method.POST);
+                request.RequestFormat = DataFormat.Json;
+                request.AddBody(new
+                {
+                    logon = logon,
+                    senha = senha
+                });
+               
+                    client.ExecuteAsync(request, Response =>
+                    {
+                        if (Response.StatusCode == HttpStatusCode.OK)
+                        {
+
+                        }
+                        else
+                        {
+                           Console.WriteLine("Erro");
+                        }
+                    });
 
                 return null;
             }

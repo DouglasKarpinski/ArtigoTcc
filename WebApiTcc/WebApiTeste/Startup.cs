@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Data.Repository.Home;
+using Data.Services.Home;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,11 +20,13 @@ namespace WebApiTcc
 
         public IConfiguration Configuration { get; }
 
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-
+            
+            
             services.AddSingleton<IDatabaseInvoker, DatabaseInvoker>();
             services.AddSingleton<IHomeApplication, HomeApplication>();
             services.AddSingleton<IHomeServices, HomeServices>();

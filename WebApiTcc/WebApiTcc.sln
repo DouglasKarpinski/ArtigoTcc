@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiTcc", "WebApiTeste\WebApiTcc.csproj", "{A0EAAD81-D26C-435B-8814-B7A622543052}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "1 - Services\Data.csproj", "{4230904F-C5C4-40AD-A868-CD6A7E51F62F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Api", "0 - Api", "{ACF6059D-9BAC-4FE7-8D95-C6AAF067F9B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Infrastructure", "1 - Infrastructure", "{AC282F32-5AEB-4BEE-93A7-BAEAE8FBE8BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +21,17 @@ Global
 		{A0EAAD81-D26C-435B-8814-B7A622543052}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0EAAD81-D26C-435B-8814-B7A622543052}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0EAAD81-D26C-435B-8814-B7A622543052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4230904F-C5C4-40AD-A868-CD6A7E51F62F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4230904F-C5C4-40AD-A868-CD6A7E51F62F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4230904F-C5C4-40AD-A868-CD6A7E51F62F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4230904F-C5C4-40AD-A868-CD6A7E51F62F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A0EAAD81-D26C-435B-8814-B7A622543052} = {ACF6059D-9BAC-4FE7-8D95-C6AAF067F9B7}
+		{4230904F-C5C4-40AD-A868-CD6A7E51F62F} = {AC282F32-5AEB-4BEE-93A7-BAEAE8FBE8BE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28F434D2-48CF-4391-9564-0AFD44F6A59C}

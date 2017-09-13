@@ -1,19 +1,15 @@
-﻿using WebApiTcc.Application.WebApiRequests;
-using WebApiTcc.Helpers;
-using WebApiTcc.Models;
-
-namespace WebApiTcc.Application.Home
+﻿namespace WebApiTcc.Application.Home
 {
     public class HomeApplication : SharedApplication, IHomeApplication
     {
         private string Api => "api/Ping";
 
-        public Response Get()
-        {
-            return new WebApiRequest("http://192.168.7.10:30019/")
-                .AddResource(Api)
-                .Get()
-                .GetContent();
-        }
+        //public Response Get()
+        //{
+        //    return new WebApiRequest("http://192.168.7.10:30019/")
+        //        .AddResource(Api)
+        //        .Get()
+        //        .GetContent();
+        //}
     }
 }

@@ -1,8 +1,8 @@
-﻿using System;
-using WebApiTcc.Repository.Home;
-using WebApiTcc.ViewModel.Home;
+﻿using Data.Repository.Home;
+using System;
+using WebApiTcc.Services.Home;
 
-namespace WebApiTcc.Services.Home
+namespace Data.Services.Home
 {
     public class HomeServices :IHomeServices
     {
