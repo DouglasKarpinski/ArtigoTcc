@@ -87,26 +87,8 @@ namespace WebApiTcc.Controllers
         {
             try
             {
-                var client = new RestClient("http://localhost:30019");
-                var request = new RestRequest("api/token/", Method.POST);
-                request.RequestFormat = DataFormat.Json;
-                request.AddBody(new
-                {
-                    logon = logon,
-                    senha = senha
-                });
-               
-                    client.ExecuteAsync(request, Response =>
-                    {
-                        if (Response.StatusCode == HttpStatusCode.OK)
-                        {
-
-                        }
-                        else
-                        {
-                           Console.WriteLine("Erro");
-                        }
-                    });
+                var result = _homeApplication.GetUser(logon, senha);
+                
 
                 return null;
             }

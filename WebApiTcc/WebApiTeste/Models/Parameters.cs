@@ -1,8 +1,9 @@
 ﻿namespace WebApiTcc.Models
 {
-    public class Parameters
+    public static class Parameters
     {
-        public UriApi UriApi { get; set; }
+        public static UriApi UriApi { get; set; }
+       
     }
 
     public class UriApi

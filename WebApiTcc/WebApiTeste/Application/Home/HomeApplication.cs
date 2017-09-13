@@ -1,15 +1,39 @@
-﻿namespace WebApiTcc.Application.Home
+﻿using RestSharp;
+using System;
+using System.Net;
+using WebApiTcc.Models;
+using WebApiTcc.ViewModel.Usuario;
+
+namespace WebApiTcc.Application.Home
 {
     public class HomeApplication : SharedApplication, IHomeApplication
     {
-        private string Api => "api/Ping";
+        string uri = new UriApi().Ecommerce;
 
-        //public Response Get()
-        //{
-        //    return new WebApiRequest("http://192.168.7.10:30019/")
-        //        .AddResource(Api)
-        //        .Get()
-        //        .GetContent();
-        //}
+        public Response<UsuarioViewModel> GetUser(string logon, string senha)
+        {
+            var client = new RestClient(uri);
+            var request = new RestRequest("api/token/", Method.POST);
+            request.RequestFormat = DataFormat.Json;
+            request.AddBody(new
+            {
+                logon = logon,
+                senha = senha
+            });
+
+            client.ExecuteAsync(request, Response =>
+            {
+                if (Response.StatusCode == HttpStatusCode.OK)
+                {
+
+                }
+                else
+                {
+                    Console.WriteLine("Erro");
+                }
+            });
+
+            return null;
+        }
     }
 }
