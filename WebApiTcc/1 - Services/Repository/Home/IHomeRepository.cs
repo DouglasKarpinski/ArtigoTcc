@@ -5,5 +5,6 @@ namespace Data.Repository.Home
     public interface IHomeRepository
     {
         HomeViewModel Get();
+        void GetBd();
     }
 }

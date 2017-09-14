@@ -7,7 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 using WebApiTcc.Application.Home;
 using WebApiTcc.Helpers.DataBaseInvoker;
 using WebApiTcc.Repository.Home;
-using WebApiTcc.Services.Home;
 
 namespace WebApiTcc
 {

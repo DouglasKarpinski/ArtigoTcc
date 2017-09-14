@@ -3865,6 +3865,9 @@
         }
       },
       "Data/1.0.0": {
+        "dependencies": {
+          "System.Data.SqlClient": "4.4.0"
+        },
         "runtime": {
           "Data.dll": {}
         },

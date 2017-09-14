@@ -1,9 +1,7 @@
-﻿using Data.Services.Home;
-
-namespace WebApiTcc.Services.Home
+﻿namespace Data.Services.Home
 {
     public interface IHomeServices
     {
-       HomeViewModel Get();
+        void GetBd();
     }
 }

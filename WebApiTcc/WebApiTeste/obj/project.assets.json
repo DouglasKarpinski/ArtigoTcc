@@ -4836,6 +4836,9 @@
       "Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "System.Data.SqlClient": "4.3.0"
+        },
         "compile": {
           "bin/placeholder/Data.dll": {}
         },

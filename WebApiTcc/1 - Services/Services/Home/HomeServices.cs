@@ -1,6 +1,5 @@
 ﻿using Data.Repository.Home;
 using System;
-using WebApiTcc.Services.Home;
 
 namespace Data.Services.Home
 {
@@ -26,6 +25,11 @@ namespace Data.Services.Home
                 Console.WriteLine(e);
                 throw;
             }
+        }
+
+        public void GetBd()
+        {
+            _homeRepository.GetBd();
         }
     }
 }

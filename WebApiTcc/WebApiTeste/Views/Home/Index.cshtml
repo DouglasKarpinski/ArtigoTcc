@@ -72,6 +72,9 @@
     <div class="col-md-3">
         <button id="idButtonUser">GetUser</button>
     </div>
+    <div class="col-md-3">
+        <button id="idButtonBd">teste banco</button>
+    </div>
 </div>
 
 @section scripts{
@@ -89,6 +92,19 @@
         $("#idButtonUser").click(function () {
             console.log("teste");
             $.get("@Url.Action("GetUser","Home")",
+                {
+                    logon: "irroba",
+                    senha : "123"
+                }).success(function(data) {
+                alert("Retorno: " + data);
+            }).error(function(xhr) {
+                alert(xhr.responseText);
+            });
+        });
+
+        $("#idButtonBd").click(function () {
+            console.log("teste");
+            $.get("@Url.Action("GetBd","Home")",
                 {
                     logon: "irroba",
                     senha : "123"

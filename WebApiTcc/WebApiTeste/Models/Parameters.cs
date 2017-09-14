@@ -8,6 +8,7 @@
 
     public class UriApi
     {
-        public string Ecommerce => "http://192.168.7.10:30019/";
+        public string Ecommerce => "http://localhost:30019/";
+        public string Azure => "http://emotionwebapi.azurewebsites.net";
     }
 }

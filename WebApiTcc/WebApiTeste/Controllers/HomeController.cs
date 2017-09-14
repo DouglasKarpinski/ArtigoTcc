@@ -1,15 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Data.Services.Home;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using RestSharp;
 using System;
 using System.Diagnostics;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using WebApiTcc.Application.Home;
 using WebApiTcc.Models;
-using WebApiTcc.Services.Home;
 
 namespace WebApiTcc.Controllers
 {
@@ -54,26 +50,9 @@ namespace WebApiTcc.Controllers
         {
             try
             {
-                string retValue = "";
-                using (var client = new HttpClient())
-                {
-                    var ecomerce = "http://localhost:30019";
-                    var resourceEcommerce = "api/ping";
+                var retorno =  _homeApplication.Get();
 
-                    var azure = "http://emotionwebapi.azurewebsites.net";
-                    var resourceAzure = "api/emotion";
-
-                    client.BaseAddress = new Uri(azure);
-                    client.DefaultRequestHeaders.Accept.Clear();
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                    HttpResponseMessage response = await client.GetAsync(resourceAzure);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        retValue = await response.Content.ReadAsStringAsync();
-                    }
-                }
-                return View("Index", retValue);
+                return null;
 
             }
             catch (Exception e)
@@ -97,6 +76,13 @@ namespace WebApiTcc.Controllers
                 Console.WriteLine(e);
                 throw;
             }
+        }
+
+        public IActionResult GetBd()
+        {
+            _homeServices.GetBd();
+
+            return null;
         }
     }
 }
