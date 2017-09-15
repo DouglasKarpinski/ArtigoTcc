@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 
-namespace WebApiTcc.Helpers.DataBaseInvoker
+namespace Data.Repository.DataBaseInvoker
 {
     public class DatabaseInvoker : IDatabaseInvoker
     {

@@ -1,10 +1,10 @@
-﻿using Data.Services.Home;
+﻿using Data.Services.Usuario;
+using System.Collections.Generic;
 
 namespace Data.Repository.Home
 {
     public interface IHomeRepository
     {
-        HomeViewModel Get();
-        void GetBd();
+        IEnumerable<Usuario> GetBd();
     }
 }

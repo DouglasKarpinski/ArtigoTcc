@@ -1,7 +1,9 @@
-﻿namespace Data.Services.Home
+﻿using System.Collections.Generic;
+
+namespace Data.Services.Home
 {
     public interface IHomeServices
     {
-        void GetBd();
+        IEnumerable<Usuario.Usuario> GetBd();
     }
 }

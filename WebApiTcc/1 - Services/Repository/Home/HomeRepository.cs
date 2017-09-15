@@ -1,61 +1,42 @@
-﻿using Data.Repository.Home;
-using Data.Services.Home;
-using System;
+﻿using Dapper;
+using Data.Services.Usuario;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 
-namespace WebApiTcc.Repository.Home
+namespace Data.Repository.Home
 {
     public class HomeRepository : IHomeRepository
     {
-        //cleyton ferrari  
 
-        private enum Procedures
+        private readonly UI _ui;
+
+        private string connectionString;
+
+
+        public HomeRepository(UI ui)
         {
-            SP_SelecionaUsuario
-        }
-        
-
-        //public HomeViewModel Get()
-        //{
-        //    var lst = new List<UsuarioViewModel>();
-        //    var home = new HomeViewModel();
-        //    _databaseInvoker.BeginNewStatement(Procedures.SP_SelecionaUsuario);
-        //    using (var reader = _databaseInvoker.ExecuteReader(CommandBehavior.Default))
-        //        while (reader.Read())
-        //            lst.Add(new UsuarioViewModel(
-        //                reader.ReadAsInt("IdUsuario"),
-        //                reader.ReadAsString("Nome"),
-        //                reader.ReadAsString("Senha"),
-        //                reader.ReadAsBool("Ativo"),
-        //                reader.ReadAsInt("IdGrupoEconomico")
-        //                ));
-
-        //    home.Usuario = lst;
-
-        //    return home;
-        //}
-        public HomeViewModel Get()
-        {
-            throw new System.NotImplementedException();
+            _ui = ui;
         }
 
-        public void GetBd()
+        public HomeRepository()
+        {
+            connectionString =_ui.DataBase;
+        }
+        public IDbConnection Connection => new SqlConnection(connectionString);
+
+        public IEnumerable<Usuario> GetBd()
         {
 
-            SqlConnection conection = new SqlConnection(@"Server=SQLSERVER;Data Source=analisesatisfacao.database.windows.net;Integrated Security=SSPI;Initial Catalog=TCC Database;User ID=administrador;Password=Adm123**;Trusted_Connection=False;Encrypt=True;Integrated Security=False");
-            //"Server=$SQLSERVER;Database=$SQLDB;Authentication=Active Directory Integrated;Encrypt=True;TrustServerCertificate=False;"
-            conection.Open();
-
-            /*teste no banco*/
-
-            string strquery = "SELECT * FROM [dbo].[Usuario]";
-            SqlCommand cmdCommandSelect = new SqlCommand(strquery, conection);
-            SqlDataReader dados = cmdCommandSelect.ExecuteReader();
-
-            while (dados.Read())
+            using (IDbConnection dbConnection = Connection)
             {
-                Console.WriteLine($"id:{dados["IdUsuario"]}, Nome{dados["Nome"]},Senha{dados["Senha"]}, Ativo{dados["Ativo"]}, IdGrupoEconomico{dados["IdGrupoEconomico"]}");
+                dbConnection.Open();
+                return dbConnection.Query<Usuario>("SELECT * FROM [dbo].[Usuario]");
             }
+
+
+
         }
     }
 }
+

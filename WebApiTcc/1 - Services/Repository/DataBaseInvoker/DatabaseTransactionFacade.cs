@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace WebApiTcc.Helpers.DataBaseInvoker
+namespace Data.Repository.DataBaseInvoker
 {
     public static class DatabaseTransactionFacade
     {

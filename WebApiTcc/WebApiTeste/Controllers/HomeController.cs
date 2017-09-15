@@ -80,7 +80,7 @@ namespace WebApiTcc.Controllers
 
         public IActionResult GetBd()
         {
-            _homeServices.GetBd();
+           var retorno = _homeServices.GetBd();
 
             return null;
         }

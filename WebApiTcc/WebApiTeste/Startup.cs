@@ -1,12 +1,11 @@
-﻿using Data.Repository.Home;
+﻿using Data.Repository;
+using Data.Repository.Home;
 using Data.Services.Home;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebApiTcc.Application.Home;
-using WebApiTcc.Helpers.DataBaseInvoker;
-using WebApiTcc.Repository.Home;
 
 namespace WebApiTcc
 {
@@ -24,9 +23,9 @@ namespace WebApiTcc
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            
-            
-            services.AddSingleton<IDatabaseInvoker, DatabaseInvoker>();
+
+            services.AddSingleton(Configuration.GetSection("ConnectionStrings").Get<UI>());
+
             services.AddSingleton<IHomeApplication, HomeApplication>();
             services.AddSingleton<IHomeServices, HomeServices>();
             services.AddSingleton<IHomeRepository, HomeRepository>();

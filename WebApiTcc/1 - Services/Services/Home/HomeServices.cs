@@ -1,5 +1,5 @@
 ﻿using Data.Repository.Home;
-using System;
+using System.Collections.Generic;
 
 namespace Data.Services.Home
 {
@@ -13,23 +13,10 @@ namespace Data.Services.Home
             _homeRepository = homeRepository;
         }
 
-        public HomeViewModel Get()
-        {
-            try
-            {
-                return _homeRepository.Get();
 
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-        }
-
-        public void GetBd()
+        public IEnumerable<Usuario.Usuario> GetBd()
         {
-            _homeRepository.GetBd();
+           return _homeRepository.GetBd();
         }
     }
 }

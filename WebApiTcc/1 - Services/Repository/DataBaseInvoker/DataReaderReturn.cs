@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 
-namespace WebApiTcc.Helpers
+namespace Data.Repository.DataBaseInvoker
 {
     public static class DataReaderReturn
     {
