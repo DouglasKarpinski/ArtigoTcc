@@ -6,5 +6,6 @@ namespace Data.Services.Categoria
     {
         IEnumerable<Categoria> GetAll();
         Categoria Post(Categoria categoria);
+        Categoria GetById(int idCategoria);
     }
 }

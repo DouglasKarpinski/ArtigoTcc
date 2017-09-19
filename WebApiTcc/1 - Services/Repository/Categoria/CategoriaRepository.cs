@@ -40,5 +40,16 @@ namespace Data.Repository.Categoria
             }
         }
 
+        public Services.Categoria.Categoria GetById(int idCategoria)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                string sQuery = "SELECT * FROM [dbo].[Categoria]"
+                                + "WHERE IdCategoria = @IdCategoria";
+                dbConnection.Open();
+                return dbConnection.Query<Services.Categoria.Categoria>(sQuery, new {IdCategoria = idCategoria})
+                    .FirstOrDefault();
+            }
+        }
     }
 }

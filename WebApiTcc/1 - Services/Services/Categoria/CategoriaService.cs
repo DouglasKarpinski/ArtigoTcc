@@ -33,9 +33,21 @@ namespace Data.Services.Categoria
         {
             try
             {
-                 _categoriaRepository.Post(categoria);
+                return _categoriaRepository.Post(categoria);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
 
-                return null;
+        public Categoria GetById(int idCategoria)
+        {
+            try
+            {
+                return _categoriaRepository.GetById(idCategoria);
+
             }
             catch (Exception e)
             {

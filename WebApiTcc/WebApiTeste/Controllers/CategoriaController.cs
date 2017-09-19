@@ -46,7 +46,10 @@ namespace WebApiTcc.Controllers
                 {
                     var categoria = new Categoria()
                     {
-                        Descricao = categoriaViewModel.Descricao
+                        Nome = categoriaViewModel.Nome,
+                        Descricao = categoriaViewModel.Descricao,
+                        Ativo = categoriaViewModel.Ativo,
+                        IdUnidadeNegocio = categoriaViewModel.IdUnidadeNegocio
                     };
 
                     var retorno = _categoriaService.Post(categoria);
@@ -60,8 +63,26 @@ namespace WebApiTcc.Controllers
             {
                 return RedirectToAction("Index");
             }
+        }
 
+        public IActionResult Edit(int id)
+        {
+            try
+            {
+                var retorno = _categoriaService.GetById(id);
 
+                return null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public IActionResult Delete()
+        {
+            throw new NotImplementedException();
         }
     }
 }
