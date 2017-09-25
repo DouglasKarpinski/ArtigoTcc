@@ -1,8 +1,10 @@
 ﻿using Data.Repository;
 using Data.Repository.Categoria;
 using Data.Repository.Home;
+using Data.Repository.Produto;
 using Data.Services.Categoria;
 using Data.Services.Home;
+using Data.Services.Produto;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -33,6 +35,9 @@ namespace WebApiTcc
             services.AddSingleton<IHomeRepository, HomeRepository>();
             services.AddTransient<ICategoriaService, CategoriaService>();
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+            services.AddTransient<IProdutoService, ProdutoService>();
+            services.AddTransient<IProdutoRepository, ProdutoRepository>();
+
 
         }
 

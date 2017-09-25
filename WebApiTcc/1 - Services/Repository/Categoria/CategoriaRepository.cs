@@ -23,8 +23,18 @@ namespace Data.Repository.Categoria
         {
             using (IDbConnection dbConnection = Connection)
             {
+                string sQuery = "SELECT " +
+                                "c.IdCategoria, " +
+                                "c.Nome, " +
+                                "c.Descricao, " +
+                                "c.IdUnidadeNegocio, " +
+                                "c.Ativo, " +
+                                "un.Nome as nomeUnidadeNegocio " +
+                                "FROM [dbo].[Categoria] c " +
+                                "INNER JOIN [dbo].[UnidadeNegocio] un " +
+                                "ON c.IdUnidadeNegocio = un.IdUnidadeNegocio ";
                 dbConnection.Open();
-                return dbConnection.Query<Services.Categoria.Categoria>("SELECT * FROM [dbo].[Categoria]");
+                return dbConnection.Query<Services.Categoria.Categoria>(sQuery);
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿using Data.Services.Categoria;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Security.Principal;
 using System.Threading.Tasks;
 using WebApiTcc.ViewModel.Categoria;
@@ -21,7 +22,22 @@ namespace WebApiTcc.Controllers
         {
             try
             {
-                var categorias = _categoriaService.GetAll();
+                var retorno = _categoriaService.GetAll();
+
+                var categorias = new List<CategoriaViewModel>();
+                foreach (var item in retorno)
+                {
+                    categorias.Add(new CategoriaViewModel()
+                    {
+                        IdCategoria = item.IdCategoria,
+                        Nome = item.Nome,
+                        Descricao = item.Descricao,
+                        Ativo = item.Ativo,
+                        IdUnidadeNegocio = item.IdUnidadeNegocio
+                    });
+                }
+                
+
 
                 return View("Index", categorias);
             }
