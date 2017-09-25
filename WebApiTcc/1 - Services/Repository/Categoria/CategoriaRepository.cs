@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using System;
+using Dapper;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -49,6 +50,34 @@ namespace Data.Repository.Categoria
                 dbConnection.Open();
                 return dbConnection.Query<Services.Categoria.Categoria>(sQuery, new {IdCategoria = idCategoria})
                     .FirstOrDefault();
+            }
+        }
+
+        public Services.Categoria.Categoria Put(Services.Categoria.Categoria categoria)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                string sQuery = "UPDATE [dbo].[Categoria]"
+                                + " SET Nome = @Nome, " +
+                                "Descricao = @Descricao, " +
+                                "IdUnidadeNegocio = @IdUnidadeNegocio, " +
+                                "Ativo = @Ativo " +
+                                "WHERE IdCategoria = @IdCategoria";
+
+                dbConnection.Open();
+                dbConnection.Execute(sQuery, categoria);
+
+                return categoria;
+            }
+        }
+
+        public void Delete(int id)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                string sQuery = "DELETE FROM [dbo].[Categoria] WHERE IdCategoria = @IdCategoria";
+                dbConnection.Open();
+                dbConnection.Execute(sQuery, new{IdCategoria = id});
             }
         }
     }

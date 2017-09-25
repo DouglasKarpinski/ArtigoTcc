@@ -1,6 +1,7 @@
 ﻿using Data.Services.Categoria;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using WebApiTcc.ViewModel.Categoria;
 
@@ -38,7 +39,7 @@ namespace WebApiTcc.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CategoriaViewModel categoriaViewModel)
+        public async Task<IActionResult> Post(CategoriaViewModel categoriaViewModel)
         {
             try
             {
@@ -70,19 +71,73 @@ namespace WebApiTcc.Controllers
             try
             {
                 var retorno = _categoriaService.GetById(id);
+                if (retorno != null)
+                {
+                    var categoria = new CategoriaViewModel()
+                    {
+
+                        IdCategoria = retorno.IdCategoria,
+                        Nome = retorno.Nome,
+                        Descricao = retorno.Descricao,
+                        Ativo = retorno.Ativo,
+                        IdUnidadeNegocio = retorno.IdUnidadeNegocio
+                    };
+
+                    return View("Edit", categoria);
+                }
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Put(CategoriaViewModel categoriaViewModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var categoria = new Categoria()
+                    {
+                        IdCategoria = categoriaViewModel.IdCategoria,
+                        Nome = categoriaViewModel.Nome,
+                        Descricao = categoriaViewModel.Descricao,
+                        Ativo = categoriaViewModel.Ativo,
+                        IdUnidadeNegocio = categoriaViewModel.IdUnidadeNegocio
+                    };
+
+                    var retorno = _categoriaService.Put(categoria);
+
+                    return RedirectToAction("Index");
+                }
+
 
                 return null;
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                return RedirectToAction("Index");
             }
+
+
         }
 
-        public IActionResult Delete()
+        public IActionResult Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _categoriaService.Delete(id);
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Index");
+            }
         }
     }
 }
