@@ -55,5 +55,31 @@ namespace Data.Services.Categoria
                 throw;
             }
         }
+
+        public Categoria Put(Categoria categoria)
+        {
+            try
+            {
+                return _categoriaRepository.Put(categoria);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public void Delete(int id)
+        {
+            try
+            {
+                _categoriaRepository.Delete(id);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
     }
 }

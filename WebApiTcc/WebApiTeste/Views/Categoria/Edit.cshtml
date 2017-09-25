@@ -1,38 +1,39 @@
 ﻿@model WebApiTcc.ViewModel.Categoria.CategoriaViewModel
-@{ViewData["Title"] = "Adicionar Categoria";}
+@{ViewData["Title"] = "Editar Categoria";}
 <h2>@ViewData["Title"]</h2>
 
 <h4>Informe os dados da Categoria</h4>
 <hr />
-<form asp-action="Post" class="form-horizontal">
+<form asp-action="Put" class="form-horizontal">
     <div class="form-group">
+        <input asp-for="IdCategoria" type="hidden">
         <label asp-for="Nome" class="col-md-2 control-label">Nome</label>
         <div class="col-md-10">
-            <input asp-for="Nome" class="form-control">
-            <span asp-validation-for="Nome" class="text-danger" />
+            <input asp-for="Nome" class="form-control" value="@Model.Nome">
+            <span asp-validation-for="Nome" class="text-danger"/>
         </div>
         <br>
         <label asp-for="Descricao" class="col-md-2 control-label">Descricao</label>
         <div class="col-md-10">
-            <input asp-for="Descricao" class="form-control">
+            <input asp-for="Descricao" class="form-control" value="@Model.Descricao">
             <span asp-validation-for="Descricao" class="text-danger"/>
         </div>
         <br>
         <label asp-for="IdUnidadeNegocio" class="col-md-2 control-label">Unidade</label>
         <div class="col-md-10">
-            <input asp-for="IdUnidadeNegocio" class="form-control">
-            <span asp-validation-for="IdUnidadeNegocio" class="text-danger" />
+            <input asp-for="IdUnidadeNegocio" class="form-control" value="@Model.IdUnidadeNegocio">
+            <span asp-validation-for="IdUnidadeNegocio" class="text-danger"/>
         </div>
         <br>
         <label asp-for="Ativo" class="col-md-2 control-label">Ativo</label>
         <div class="radio col-md-10">
-            <label><input asp-for="Ativo" value="true" type="radio" checked>Sim</label>
+            <label><input asp-for="Ativo" value="true" type="radio">Sim</label>
             <label><input asp-for="Ativo" value="false" type="radio">Não</label>
         </div>
     </div>
     <div align="right" class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Adicionar" class="btn btn-success">
+            <input type="submit" value="Editar" class="btn btn-success">
             <a class="btn btn-default" asp-action="Index">Voltar</a>
         </div>
     </div>
