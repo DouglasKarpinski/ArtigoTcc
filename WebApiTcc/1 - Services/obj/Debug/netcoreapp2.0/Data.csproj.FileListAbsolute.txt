@@ -16,3 +16,12 @@ C:\Users\dougl\OneDrive\Documentos\TCC\WebApiTcc\1 - Services\obj\Debug\netcorea
 C:\Users\dougl\OneDrive\Documentos\TCC\WebApiTcc\1 - Services\obj\Debug\netcoreapp2.0\Data.AssemblyInfo.cs
 C:\Users\dougl\OneDrive\Documentos\TCC\WebApiTcc\1 - Services\obj\Debug\netcoreapp2.0\Data.dll
 C:\Users\dougl\OneDrive\Documentos\TCC\WebApiTcc\1 - Services\obj\Debug\netcoreapp2.0\Data.pdb
+C:\Projetos\tcc\WebApiTcc\1 - Services\bin\Debug\netcoreapp2.0\Data.deps.json
+C:\Projetos\tcc\WebApiTcc\1 - Services\bin\Debug\netcoreapp2.0\Data.dll
+C:\Projetos\tcc\WebApiTcc\1 - Services\bin\Debug\netcoreapp2.0\Data.pdb
+C:\Projetos\tcc\WebApiTcc\1 - Services\obj\Debug\netcoreapp2.0\Data.csprojResolveAssemblyReference.cache
+C:\Projetos\tcc\WebApiTcc\1 - Services\obj\Debug\netcoreapp2.0\Data.csproj.CoreCompileInputs.cache
+C:\Projetos\tcc\WebApiTcc\1 - Services\obj\Debug\netcoreapp2.0\Data.AssemblyInfoInputs.cache
+C:\Projetos\tcc\WebApiTcc\1 - Services\obj\Debug\netcoreapp2.0\Data.AssemblyInfo.cs
+C:\Projetos\tcc\WebApiTcc\1 - Services\obj\Debug\netcoreapp2.0\Data.dll
+C:\Projetos\tcc\WebApiTcc\1 - Services\obj\Debug\netcoreapp2.0\Data.pdb

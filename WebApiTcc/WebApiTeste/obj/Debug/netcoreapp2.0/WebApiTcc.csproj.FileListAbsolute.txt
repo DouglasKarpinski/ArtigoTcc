@@ -35,3 +35,16 @@ C:\Users\dougl\OneDrive\Documentos\TCC\WebApiTcc\WebApiTeste\obj\Debug\netcoreap
 C:\Users\dougl\OneDrive\Documentos\TCC\WebApiTcc\WebApiTeste\obj\Debug\netcoreapp2.0\WebApiTcc.AssemblyInfo.cs
 C:\Users\dougl\OneDrive\Documentos\TCC\WebApiTcc\WebApiTeste\obj\Debug\netcoreapp2.0\WebApiTcc.dll
 C:\Users\dougl\OneDrive\Documentos\TCC\WebApiTcc\WebApiTeste\obj\Debug\netcoreapp2.0\WebApiTcc.pdb
+C:\Projetos\tcc\WebApiTcc\WebApiTeste\bin\Debug\netcoreapp2.0\WebApiTcc.deps.json
+C:\Projetos\tcc\WebApiTcc\WebApiTeste\bin\Debug\netcoreapp2.0\WebApiTcc.runtimeconfig.json
+C:\Projetos\tcc\WebApiTcc\WebApiTeste\bin\Debug\netcoreapp2.0\WebApiTcc.runtimeconfig.dev.json
+C:\Projetos\tcc\WebApiTcc\WebApiTeste\bin\Debug\netcoreapp2.0\WebApiTcc.dll
+C:\Projetos\tcc\WebApiTcc\WebApiTeste\bin\Debug\netcoreapp2.0\WebApiTcc.pdb
+C:\Projetos\tcc\WebApiTcc\WebApiTeste\bin\Debug\netcoreapp2.0\Data.dll
+C:\Projetos\tcc\WebApiTcc\WebApiTeste\bin\Debug\netcoreapp2.0\Data.pdb
+C:\Projetos\tcc\WebApiTcc\WebApiTeste\obj\Debug\netcoreapp2.0\WebApiTcc.csprojResolveAssemblyReference.cache
+C:\Projetos\tcc\WebApiTcc\WebApiTeste\obj\Debug\netcoreapp2.0\WebApiTcc.csproj.CoreCompileInputs.cache
+C:\Projetos\tcc\WebApiTcc\WebApiTeste\obj\Debug\netcoreapp2.0\WebApiTcc.AssemblyInfoInputs.cache
+C:\Projetos\tcc\WebApiTcc\WebApiTeste\obj\Debug\netcoreapp2.0\WebApiTcc.AssemblyInfo.cs
+C:\Projetos\tcc\WebApiTcc\WebApiTeste\obj\Debug\netcoreapp2.0\WebApiTcc.dll
+C:\Projetos\tcc\WebApiTcc\WebApiTeste\obj\Debug\netcoreapp2.0\WebApiTcc.pdb

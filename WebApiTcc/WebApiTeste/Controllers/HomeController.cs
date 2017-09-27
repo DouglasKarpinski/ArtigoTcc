@@ -20,11 +20,6 @@ namespace WebApiTcc.Controllers
             _homeServices = homeServices;
         }
 
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
@@ -43,8 +38,6 @@ namespace WebApiTcc.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-       
 
         public async Task<IActionResult> Get()
         {
