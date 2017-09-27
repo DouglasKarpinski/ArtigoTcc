@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Data.Repository.Produto;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using Data.Repository.Produto;
 
 namespace Data.Services.Produto
 {
@@ -25,6 +24,11 @@ namespace Data.Services.Produto
                 Console.WriteLine(e);
                 throw;
             }
+        }
+
+        public Produto Post(Produto produto)
+        {
+            return _produtoRepository.Post(produto);
         }
     }
 }

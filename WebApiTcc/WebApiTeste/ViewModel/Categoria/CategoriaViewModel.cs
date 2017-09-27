@@ -7,5 +7,6 @@
         public string Descricao { get; set; }
         public int IdUnidadeNegocio { get; set; }
         public bool Ativo { get; set; }
+        public string NomeUnidadeNegocio { get; set; }
     }
 }

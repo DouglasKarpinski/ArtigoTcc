@@ -3785,7 +3785,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dougl\\.nuget\\packages\\": {},
+    "C:\\Users\\Douglas.Karpinski\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -3794,17 +3794,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\dougl\\OneDrive\\Documentos\\TCC\\WebApiTcc\\1 - Services\\Data.csproj",
+      "projectUniqueName": "C:\\Users\\Douglas.Karpinski\\Documents\\tcc\\WebApiTcc\\1 - Services\\Data.csproj",
       "projectName": "Data",
-      "projectPath": "C:\\Users\\dougl\\OneDrive\\Documentos\\TCC\\WebApiTcc\\1 - Services\\Data.csproj",
-      "packagesPath": "C:\\Users\\dougl\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dougl\\OneDrive\\Documentos\\TCC\\WebApiTcc\\1 - Services\\obj\\",
+      "projectPath": "C:\\Users\\Douglas.Karpinski\\Documents\\tcc\\WebApiTcc\\1 - Services\\Data.csproj",
+      "packagesPath": "C:\\Users\\Douglas.Karpinski\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Douglas.Karpinski\\Documents\\tcc\\WebApiTcc\\1 - Services\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\dougl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Douglas.Karpinski\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

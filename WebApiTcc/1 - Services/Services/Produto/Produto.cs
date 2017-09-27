@@ -11,5 +11,6 @@ namespace Data.Services.Produto
         public string Nome { get; set; }
         public bool Ativo { get; set; }
         public int IdCategoria { get; set; }
+        public string NomeCategoria { get; set; }
     }
 }
