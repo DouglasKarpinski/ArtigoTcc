@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Dapper;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text;
-using Dapper;
+using System.Linq;
 
 namespace Data.Repository.Produto
 {
@@ -23,7 +22,25 @@ namespace Data.Repository.Produto
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                return dbConnection.Query<Services.Produto.Produto>("SELECT * FROM [dbo].[Produto]");
+                return dbConnection.Query<Services.Produto.Produto>("SELECT " +
+                                                                    "p.* , " +
+                                                                    "c.Nome as NomeCategoria " +
+                                                                    "FROM [dbo].[Produto] p " +
+                                                                    "INNER JOIN [dbo].[Categoria] c " +
+                                                                    "ON p.IdCategoria = c.IdCategoria");
+            }
+        }
+
+        public Services.Produto.Produto Post(Services.Produto.Produto produto)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                string sQuery = "INSERT INTO [dbo].[Produto] (Nome, Descricao, IdCategoria, Ativo)"
+                                + " VALUES(@Nome, @Descricao, @IdCategoria, @Ativo)";
+                dbConnection.Open();
+                dbConnection.Execute(sQuery, produto);
+
+                return dbConnection.Query<Services.Produto.Produto>("SELECT TOP 1 * FROM [dbo].[Produto] ORDER BY IdProduto DESC ").FirstOrDefault();
             }
         }
     }

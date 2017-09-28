@@ -1,5 +1,4 @@
-﻿using System;
-using Dapper;
+﻿using Dapper;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -29,7 +28,7 @@ namespace Data.Repository.Categoria
                                 "c.Descricao, " +
                                 "c.IdUnidadeNegocio, " +
                                 "c.Ativo, " +
-                                "un.Nome as nomeUnidadeNegocio " +
+                                "un.Nome as NomeUnidadeNegocio " +
                                 "FROM [dbo].[Categoria] c " +
                                 "INNER JOIN [dbo].[UnidadeNegocio] un " +
                                 "ON c.IdUnidadeNegocio = un.IdUnidadeNegocio ";

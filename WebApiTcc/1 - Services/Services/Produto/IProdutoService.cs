@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Data.Services.Produto
 {
     public interface IProdutoService
     {
         IEnumerable<Produto> GetAll();
+        Produto Post(Produto produto);
     }
 }

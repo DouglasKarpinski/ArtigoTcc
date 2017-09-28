@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Security.Principal;
 using System.Threading.Tasks;
 using WebApiTcc.ViewModel.Categoria;
 
@@ -33,7 +32,8 @@ namespace WebApiTcc.Controllers
                         Nome = item.Nome,
                         Descricao = item.Descricao,
                         Ativo = item.Ativo,
-                        IdUnidadeNegocio = item.IdUnidadeNegocio
+                        IdUnidadeNegocio = item.IdUnidadeNegocio,
+                        NomeUnidadeNegocio = item.NomeUnidadeNegocio
                     });
                 }
                 
@@ -55,7 +55,7 @@ namespace WebApiTcc.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(CategoriaViewModel categoriaViewModel)
+        public async Task<IActionResult> Post(Categoria categoriaViewModel)
         {
             try
             {
@@ -71,10 +71,9 @@ namespace WebApiTcc.Controllers
 
                     var retorno = _categoriaService.Post(categoria);
 
-                    return RedirectToAction("Index");
                 }
+                return RedirectToAction("Index");
 
-                return View(categoriaViewModel);
             }
             catch (Exception ex)
             {
