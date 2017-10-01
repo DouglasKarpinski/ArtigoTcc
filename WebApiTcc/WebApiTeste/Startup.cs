@@ -32,11 +32,11 @@ namespace WebApiTcc
 
             services.AddSingleton<IHomeApplication, HomeApplication>();
             services.AddSingleton<IHomeServices, HomeServices>();
-            services.AddSingleton<IHomeRepository, HomeRepository>();
+           // services.AddSingleton<IHomeRepository, HomeRepository>();
             services.AddTransient<ICategoriaService, CategoriaService>();
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             services.AddTransient<IProdutoService, ProdutoService>();
-            services.AddTransient<IProdutoRepository, ProdutoRepository>();
+            //services.AddTransient<IProdutoRepository, ProdutoRepository>();
 
 
         }
