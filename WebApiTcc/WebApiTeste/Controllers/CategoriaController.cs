@@ -36,8 +36,6 @@ namespace WebApiTcc.Controllers
                         NomeUnidadeNegocio = item.NomeUnidadeNegocio
                     });
                 }
-                
-
 
                 return View("Index", categorias);
             }
@@ -46,7 +44,6 @@ namespace WebApiTcc.Controllers
                 Console.WriteLine(e);
                 throw;
             }
-
         }
 
         public IActionResult Create()
