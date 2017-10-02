@@ -1,0 +1,59 @@
+﻿@{ViewData["Title"] = "Demonstração";}
+<div style="text-align: center;"><h2>@ViewData["Title"]</h2></div>
+
+<div class="table table-responsive">
+    <div class="col-sm-3"></div>
+    <div class="form-group">
+        <video autoplay></video>
+        <br /><br />
+        <label class="col-sm-6"></label>
+        <div>
+            <div class="col-md-10">
+                <label class="col-sm-7"></label>
+                <input type="button" value="Capturar" class="btn btn-primary">
+            </div>
+        </div>
+        <div class="col-sm-12 form-group" style="margin-top: 30px">
+            <div class="form-group col-sm-12">
+                <label class="col-sm-2"></label>
+                <div class="col-sm-6" style="margin-left: 55px">
+                    <label>Você também pode escolher a imagem, se preferir</label>
+                    <input type="file" accept=".jpg, .jpeg, .png" name="file" required />
+                </div>
+            </div>
+        </div>
+        <label class="col-sm-6"></label>
+        <div>
+            <div class="col-md-10">
+                <label class="col-sm-7"></label>
+                <input type="button" value="Enviar" id="btnEnviar" class="btn btn-success">
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+<script>
+    if (navigator.webkitGetUserMedia != null) {
+        var options = {
+            video: true,
+            audio: false
+        };
+
+        //request webcam access
+        navigator.webkitGetUserMedia(options,
+            function (stream) {
+                //get the video tag
+                var video = document.querySelector('video');
+                //turn the stream into a magic URL
+                video.src = window.webkitURL.createObjectURL(stream);
+            },
+            function (e) {
+                console.log("error happened");
+            }
+        );
+    }
+</script>
