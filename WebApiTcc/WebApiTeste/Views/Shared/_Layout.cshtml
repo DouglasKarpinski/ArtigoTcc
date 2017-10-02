@@ -39,6 +39,7 @@
                             <li><a asp-controller="Produto" asp-action="Index">Produtos</a></li>
                         </ul>
                     </li>
+                    <li><a asp-area="" asp-controller="Emotion" asp-action="Index">Demonstração</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contato</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -51,7 +52,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.ToShortDateString() - WebApi</p>
+            <p>&copy; @DateTime.Now.ToShortDateString() - TCC, Ferramenta de Analíse de Satisfação.</p>
         </footer>
     </div>
 
