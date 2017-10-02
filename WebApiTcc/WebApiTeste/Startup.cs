@@ -23,7 +23,6 @@ namespace WebApiTcc
         public IConfiguration Configuration { get; }
 
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
@@ -32,7 +31,7 @@ namespace WebApiTcc
 
             services.AddSingleton<IHomeApplication, HomeApplication>();
             services.AddSingleton<IHomeServices, HomeServices>();
-            services.AddSingleton<IHomeRepository, HomeRepository>();
+           // services.AddSingleton<IHomeRepository, HomeRepository>();
             services.AddTransient<ICategoriaService, CategoriaService>();
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             services.AddTransient<IProdutoService, ProdutoService>();
@@ -41,7 +40,6 @@ namespace WebApiTcc
 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())

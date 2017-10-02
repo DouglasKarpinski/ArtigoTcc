@@ -55,7 +55,7 @@ namespace WebApiTcc.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(Categoria categoriaViewModel)
+        public IActionResult Post(Categoria categoriaViewModel)
         {
             try
             {
@@ -103,7 +103,7 @@ namespace WebApiTcc.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return RedirectToAction("Index");
             }
@@ -133,12 +133,10 @@ namespace WebApiTcc.Controllers
 
                 return null;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return RedirectToAction("Index");
             }
-
-
         }
 
         public IActionResult Delete(int id)
@@ -149,7 +147,7 @@ namespace WebApiTcc.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return RedirectToAction("Index");
             }

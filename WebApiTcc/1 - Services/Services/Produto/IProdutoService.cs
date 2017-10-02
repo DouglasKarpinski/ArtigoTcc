@@ -6,5 +6,8 @@ namespace Data.Services.Produto
     {
         IEnumerable<Produto> GetAll();
         Produto Post(Produto produto);
+        Produto GetById(int id);
+        Produto Put(Produto produto);
+        void Delete(int id);
     }
 }

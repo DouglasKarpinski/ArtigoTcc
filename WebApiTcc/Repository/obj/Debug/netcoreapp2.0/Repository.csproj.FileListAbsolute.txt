@@ -1,0 +1,11 @@
+C:\Users\dougl\OneDrive\Documentos\TCC\WebApiTcc\Repository\bin\Debug\netcoreapp2.0\Repository.deps.json
+C:\Users\dougl\OneDrive\Documentos\TCC\WebApiTcc\Repository\bin\Debug\netcoreapp2.0\Repository.dll
+C:\Users\dougl\OneDrive\Documentos\TCC\WebApiTcc\Repository\bin\Debug\netcoreapp2.0\Repository.pdb
+C:\Users\dougl\OneDrive\Documentos\TCC\WebApiTcc\Repository\bin\Debug\netcoreapp2.0\Data.dll
+C:\Users\dougl\OneDrive\Documentos\TCC\WebApiTcc\Repository\bin\Debug\netcoreapp2.0\Data.pdb
+C:\Users\dougl\OneDrive\Documentos\TCC\WebApiTcc\Repository\obj\Debug\netcoreapp2.0\Repository.csprojResolveAssemblyReference.cache
+C:\Users\dougl\OneDrive\Documentos\TCC\WebApiTcc\Repository\obj\Debug\netcoreapp2.0\Repository.csproj.CoreCompileInputs.cache
+C:\Users\dougl\OneDrive\Documentos\TCC\WebApiTcc\Repository\obj\Debug\netcoreapp2.0\Repository.AssemblyInfoInputs.cache
+C:\Users\dougl\OneDrive\Documentos\TCC\WebApiTcc\Repository\obj\Debug\netcoreapp2.0\Repository.AssemblyInfo.cs
+C:\Users\dougl\OneDrive\Documentos\TCC\WebApiTcc\Repository\obj\Debug\netcoreapp2.0\Repository.dll
+C:\Users\dougl\OneDrive\Documentos\TCC\WebApiTcc\Repository\obj\Debug\netcoreapp2.0\Repository.pdb

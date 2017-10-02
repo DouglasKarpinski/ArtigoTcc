@@ -1,11 +1,9 @@
-﻿using Dapper;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using Data.Services.Categoria;
-
-namespace Data.Repository.Categoria
+using Dapper;
+namespace Repository.Repository.Categoria
 {
     public class CategoriaRepository : ICategoriaRepository
     {
@@ -19,7 +17,7 @@ namespace Data.Repository.Categoria
         public IDbConnection Connection => new SqlConnection(_ui.DataBase);
 
 
-        public IEnumerable<Services.Categoria.Categoria> GetAll()
+        public IEnumerable<Data.Services.Categoria.Categoria> GetAll()
         {
             using (IDbConnection dbConnection = Connection)
             {
@@ -29,16 +27,16 @@ namespace Data.Repository.Categoria
                                 "c.Descricao, " +
                                 "c.IdUnidadeNegocio, " +
                                 "c.Ativo, " +
-                                "un.Nome as NomeUnidadeNegocio " +
+                                "un.Nome as nomeUnidadeNegocio " +
                                 "FROM [dbo].[Categoria] c " +
                                 "INNER JOIN [dbo].[UnidadeNegocio] un " +
                                 "ON c.IdUnidadeNegocio = un.IdUnidadeNegocio ";
                 dbConnection.Open();
-                return dbConnection.Query<Services.Categoria.Categoria>(sQuery);
+                return dbConnection.Query<Data.Services.Categoria.Categoria>(sQuery);
             }
         }
 
-        public Services.Categoria.Categoria Post(Services.Categoria.Categoria categoria)
+        public Data.Services.Categoria.Categoria Post(Data.Services.Categoria.Categoria categoria)
         {
             using (IDbConnection dbConnection = Connection)
             {
@@ -47,23 +45,23 @@ namespace Data.Repository.Categoria
                 dbConnection.Open();
                 dbConnection.Execute(sQuery, categoria);
 
-                return dbConnection.Query<Services.Categoria.Categoria>("SELECT TOP 1 * FROM [dbo].[Categoria] ORDER BY IdCategoria DESC ").FirstOrDefault();
+                return dbConnection.Query<Data.Services.Categoria.Categoria>("SELECT TOP 1 * FROM [dbo].[Categoria] ORDER BY IdCategoria DESC ").FirstOrDefault();
             }
         }
 
-        public Services.Categoria.Categoria GetById(int idCategoria)
+        public Data.Services.Categoria.Categoria GetById(int idCategoria)
         {
             using (IDbConnection dbConnection = Connection)
             {
                 string sQuery = "SELECT * FROM [dbo].[Categoria]"
                                 + "WHERE IdCategoria = @IdCategoria";
                 dbConnection.Open();
-                return dbConnection.Query<Services.Categoria.Categoria>(sQuery, new {IdCategoria = idCategoria})
+                return dbConnection.Query<Data.Services.Categoria.Categoria>(sQuery, new {IdCategoria = idCategoria})
                     .FirstOrDefault();
             }
         }
 
-        public Services.Categoria.Categoria Put(Services.Categoria.Categoria categoria)
+        public Data.Services.Categoria.Categoria Put(Data.Services.Categoria.Categoria categoria)
         {
             using (IDbConnection dbConnection = Connection)
             {
@@ -90,5 +88,6 @@ namespace Data.Repository.Categoria
                 dbConnection.Execute(sQuery, new{IdCategoria = id});
             }
         }
+       
     }
 }
