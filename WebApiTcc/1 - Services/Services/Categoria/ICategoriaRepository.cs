@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 
-namespace Repository.Repository.Categoria
+namespace Data.Services.Categoria
 {
     public interface ICategoriaRepository
     {
-        IEnumerable<Data.Services.Categoria.Categoria> GetAll();
-        Data.Services.Categoria.Categoria Post(Data.Services.Categoria.Categoria categoria);
-        Data.Services.Categoria.Categoria GetById(int idCategoria);
-        Data.Services.Categoria.Categoria Put(Data.Services.Categoria.Categoria categoria);
+        IEnumerable<Categoria> GetAll();
+        Categoria Post(Categoria categoria);
+        Categoria GetById(int idCategoria);
+        Categoria Put(Categoria categoria);
         void Delete(int id);
     }
 }

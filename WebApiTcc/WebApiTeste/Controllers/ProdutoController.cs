@@ -67,14 +67,73 @@ namespace WebApiTcc.Controllers
             }
         }
 
-        public IActionResult Edit()
+        public IActionResult Edit(int id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                var retorno = _produtoService.GetById(id);
+                if (retorno != null)
+                {
+                    var produto = new ProdutoViewModel()
+                    {
+
+                        IdProduto = retorno.IdProduto,
+                        Nome = retorno.Nome,
+                        Descricao = retorno.Descricao,
+                        Ativo = retorno.Ativo,
+                        IdCategoria = retorno.IdCategoria
+                    };
+
+                    return View("Edit", produto);
+                }
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Index");
+            }
         }
 
-        public IActionResult Delete()
+        [HttpPost]
+        public IActionResult Put(ProdutoViewModel produtoViewModel)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var produto = new Produto()
+                    {
+                        IdProduto = produtoViewModel.IdProduto,
+                        Nome = produtoViewModel.Nome,
+                        Descricao = produtoViewModel.Descricao,
+                        Ativo = produtoViewModel.Ativo,
+                        IdCategoria = produtoViewModel.IdCategoria
+                    };
+
+                    var retorno = _produtoService.Put(produto);
+                }
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                _produtoService.Delete(id);
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Index");
+            }
         }
     }
 }

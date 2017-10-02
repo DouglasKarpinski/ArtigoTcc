@@ -11,14 +11,14 @@ namespace WebApiTcc.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IHomeApplication _homeApplication;
-        private readonly IHomeServices _homeServices;
+        //private readonly IHomeApplication _homeApplication;
+        //private readonly IHomeServices _homeServices;
 
-        public HomeController(IHomeApplication homeApplication, IHomeServices homeServices)
-        {
-            _homeApplication = homeApplication;
-            _homeServices = homeServices;
-        }
+        //public HomeController(IHomeApplication homeApplication, IHomeServices homeServices)
+        //{
+        //    _homeApplication = homeApplication;
+        //    _homeServices = homeServices;
+        //}
 
         public ActionResult About()
         {
@@ -39,43 +39,43 @@ namespace WebApiTcc.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public async Task<IActionResult> Get()
-        {
-            try
-            {
-                var retorno =  _homeApplication.Get();
+        //public async Task<IActionResult> Get()
+        //{
+        //    try
+        //    {
+        //        var retorno =  _homeApplication.Get();
 
-                return null;
+        //        return null;
 
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine(e);
+        //        throw;
+        //    }
+        //}
 
-        public JsonResult GetUser(string logon, string senha)
-        {
-            try
-            {
-                var result = _homeApplication.GetUser(logon, senha);
+        //public JsonResult GetUser(string logon, string senha)
+        //{
+        //    try
+        //    {
+        //        var result = _homeApplication.GetUser(logon, senha);
                 
 
-                return null;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-        }
+        //        return null;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine(e);
+        //        throw;
+        //    }
+        //}
 
-        public IActionResult GetBd()
-        {
-           var retorno = _homeServices.GetBd();
+        //public IActionResult GetBd()
+        //{
+        //   var retorno = _homeServices.GetBd();
 
-            return null;
-        }
+        //    return null;
+        //}
     }
 }
