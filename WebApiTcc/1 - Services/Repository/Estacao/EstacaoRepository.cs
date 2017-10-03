@@ -30,7 +30,7 @@ namespace Data.Repository.Estacao
                                 "e.Descricao, " +
                                 "e.IdProduto, " +
                                 "e.Ativo, " +
-                                "p.Nome as NomeUnidadeNegocio " +
+                                "p.Nome as NomeProduto " +
                                 "FROM [dbo].[Estacao] e " +
                                 "INNER JOIN [dbo].[Produto] p " +
                                 "ON e.IdProduto = p.IdProduto ";
