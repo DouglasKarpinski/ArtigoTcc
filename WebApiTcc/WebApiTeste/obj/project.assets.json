@@ -13467,7 +13467,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dougl\\.nuget\\packages\\": {},
+    "C:\\Users\\Leonardo\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -13476,17 +13476,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\dougl\\OneDrive\\Documentos\\TCC\\WebApiTcc\\WebApiTeste\\WebApiTcc.csproj",
+      "projectUniqueName": "C:\\Projetos\\tcc\\WebApiTcc\\WebApiTeste\\WebApiTcc.csproj",
       "projectName": "WebApiTcc",
-      "projectPath": "C:\\Users\\dougl\\OneDrive\\Documentos\\TCC\\WebApiTcc\\WebApiTeste\\WebApiTcc.csproj",
-      "packagesPath": "C:\\Users\\dougl\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dougl\\OneDrive\\Documentos\\TCC\\WebApiTcc\\WebApiTeste\\obj\\",
+      "projectPath": "C:\\Projetos\\tcc\\WebApiTcc\\WebApiTeste\\WebApiTcc.csproj",
+      "packagesPath": "C:\\Users\\Leonardo\\.nuget\\packages\\",
+      "outputPath": "C:\\Projetos\\tcc\\WebApiTcc\\WebApiTeste\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\dougl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Leonardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -13499,8 +13499,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\dougl\\OneDrive\\Documentos\\TCC\\WebApiTcc\\1 - Services\\Data.csproj": {
-              "projectPath": "C:\\Users\\dougl\\OneDrive\\Documentos\\TCC\\WebApiTcc\\1 - Services\\Data.csproj"
+            "C:\\Projetos\\tcc\\WebApiTcc\\1 - Services\\Data.csproj": {
+              "projectPath": "C:\\Projetos\\tcc\\WebApiTcc\\1 - Services\\Data.csproj"
             }
           }
         }
