@@ -24,3 +24,4 @@ C:\Projetos\tcc\WebApiTcc\1 - Services\obj\Debug\netcoreapp2.0\Data.AssemblyInfo
 C:\Projetos\tcc\WebApiTcc\1 - Services\obj\Debug\netcoreapp2.0\Data.AssemblyInfo.cs
 C:\Projetos\tcc\WebApiTcc\1 - Services\obj\Debug\netcoreapp2.0\Data.dll
 C:\Projetos\tcc\WebApiTcc\1 - Services\obj\Debug\netcoreapp2.0\Data.pdb
+C:\Projetos\tcc\WebApiTcc\1 - Services\obj\Debug\netcoreapp2.0\Data.csprojResolveAssemblyReference.cache
