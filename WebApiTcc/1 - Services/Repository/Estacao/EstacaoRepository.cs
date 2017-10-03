@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
 using Dapper;
 using Data.Services.Estacao;
@@ -24,10 +25,10 @@ namespace Data.Repository.Estacao
             using (IDbConnection dbConnection = Connection)
             {
                 string sQuery = "SELECT " +
-                                "e.IdCategoria, " +
+                                "e.IdEstacao, " +
                                 "e.Nome, " +
                                 "e.Descricao, " +
-                                "e.IdUnidadeNegocio, " +
+                                "e.IdProduto, " +
                                 "e.Ativo, " +
                                 "p.Nome as NomeUnidadeNegocio " +
                                 "FROM [dbo].[Estacao] e " +
@@ -35,6 +36,59 @@ namespace Data.Repository.Estacao
                                 "ON e.IdProduto = p.IdProduto ";
                 dbConnection.Open();
                 return dbConnection.Query<Services.Estacao.Estacao>(sQuery);
+            }
+        }
+
+        public Services.Estacao.Estacao Post(Services.Estacao.Estacao estacao)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                string sQuery = "INSERT INTO [dbo].[Estacao] (Nome, Descricao, IdProduto, Ativo)"
+                                + " VALUES(@Nome, @Descricao, @IdProduto, @Ativo)";
+                dbConnection.Open();
+                dbConnection.Execute(sQuery, estacao);
+
+                return dbConnection.Query<Services.Estacao.Estacao>("SELECT TOP 1 * FROM [dbo].[Estacao] ORDER BY IdEstacao DESC ").FirstOrDefault();
+            }
+        }
+
+        public Services.Estacao.Estacao GetById(int idEstacao)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                string sQuery = "SELECT * FROM [dbo].[Estacao]"
+                                + "WHERE IdEstacao = @IdEstacao";
+                dbConnection.Open();
+                return dbConnection.Query<Services.Estacao.Estacao>(sQuery, new { IdEstacao = idEstacao })
+                    .FirstOrDefault();
+            }
+        }
+
+        public Services.Estacao.Estacao Put(Services.Estacao.Estacao estacao)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                string sQuery = "UPDATE [dbo].[Estacao]"
+                                + " SET Nome = @Nome, " +
+                                "Descricao = @Descricao, " +
+                                "IdProduto = @IdProduto, " +
+                                "Ativo = @Ativo " +
+                                "WHERE IdEstacao = @IdEstacao";
+
+                dbConnection.Open();
+                dbConnection.Execute(sQuery, estacao);
+
+                return estacao;
+            }
+        }
+
+        public void Delete(int idEstacao)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                string sQuery = "DELETE FROM [dbo].[Estacao] WHERE IdEstacao = @IdEstacao";
+                dbConnection.Open();
+                dbConnection.Execute(sQuery, new { IdEstacao = idEstacao });
             }
         }
     }
