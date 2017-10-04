@@ -5,12 +5,13 @@
     <div class="col-sm-3"></div>
     <div class="form-group">
         <video autoplay></video>
+        <canvas id='canvas' width='300' style="display: none" height='300'></canvas>
         <br /><br />
         <label class="col-sm-6"></label>
         <div>
             <div class="col-md-10">
                 <label class="col-sm-7"></label>
-                <input type="button" value="Capturar" class="btn btn-primary">
+                <input type="button" id="btnCapturar" value="Capturar" class="btn btn-primary">
             </div>
         </div>
         <div class="col-sm-12 form-group" style="margin-top: 30px">
@@ -18,7 +19,8 @@
                 <label class="col-sm-2"></label>
                 <div class="col-sm-6" style="margin-left: 55px">
                     <label>Você também pode escolher a imagem, se preferir</label>
-                    <input type="file" accept=".jpg, .jpeg, .png" name="file" required />
+                    <input type="file" accept=".jpg, .jpeg, .png" id="file" />
+                    <input type="hidden" id="arquivo" name="file" />
                 </div>
             </div>
         </div>
@@ -35,25 +37,66 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-}
-<script>
-    if (navigator.webkitGetUserMedia != null) {
-        var options = {
-            video: true,
-            audio: false
-        };
 
-        //request webcam access
-        navigator.webkitGetUserMedia(options,
-            function (stream) {
-                //get the video tag
-                var video = document.querySelector('video');
-                //turn the stream into a magic URL
-                video.src = window.webkitURL.createObjectURL(stream);
-            },
-            function (e) {
-                console.log("error happened");
+    <script>
+        if (navigator.webkitGetUserMedia != null) {
+            var options = {
+                video: true,
+                audio: false
+            };
+
+            //request webcam access
+            navigator.webkitGetUserMedia(options,
+                function (stream) {
+                    //get the video tag
+                    var video = document.querySelector('video');
+                    //turn the stream into a magic URL
+                    video.src = window.webkitURL.createObjectURL(stream);
+                },
+                function (e) {
+                    console.log("error happened");
+                }
+            );
+        }
+
+        $("#btnCapturar").click(function () {
+            alert("Imagem capturada com sucesso!");
+
+            var video = document.querySelector('video');
+            var canvas = document.getElementById('canvas');
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0, 300, 300);
+
+            $("#arquivo").val(canvas.toDataURL("image/jpeg"));
+        });
+
+        $(document).on('change', "#file", function () {
+            var file = this;
+            if ($(this).val() == '') {
+                $("#arquivo").val("");
+                return;
             }
-        );
-    }
-</script>
+            if (file.files && file.files[0]) {
+                file.files[0];
+                var reader = new FileReader();
+
+                reader.readAsDataURL(file.files[0], 'UTF-8');
+
+                reader.onload = function (e) {
+                    $("#arquivo").val(e.target.result);
+                };
+            }
+        });
+
+        $("#btnEnviar").click(function() {
+            $.post('@Url.Action("PostDemonstration")',
+            {
+                file: $("#arquivo").val()
+            }).done(function (data) {
+                console.log(data);
+            }).fail(function(xhr) {
+                alert(xhr.responseText);
+            });
+        });
+    </script>
+}

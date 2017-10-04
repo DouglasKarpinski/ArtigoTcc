@@ -4,6 +4,7 @@ using Data.Repository.Estacao;
 using Data.Repository.Home;
 using Data.Repository.Produto;
 using Data.Services.Categoria;
+using Data.Services.Emotion;
 using Data.Services.Estacao;
 using Data.Services.Home;
 using Data.Services.Produto;
@@ -40,7 +41,7 @@ namespace WebApiTcc
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
             services.AddTransient<IEstacaoService, EstacaoService>();
             services.AddTransient<IEstacaoRepository, EstacaoRepository>();
-
+            services.AddTransient<IEmotionService, EmotionService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
