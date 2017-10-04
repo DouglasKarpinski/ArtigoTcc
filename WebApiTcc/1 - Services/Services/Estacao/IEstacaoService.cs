@@ -8,5 +8,9 @@ namespace Data.Services.Estacao
     public interface IEstacaoService
     {
         IEnumerable<Estacao> GetAll();
+        Estacao Post(Estacao estacao);
+        Estacao GetById(int id);
+        Estacao Put(Estacao estacao);
+        void Delete(int idEstacao);
     }
 }
