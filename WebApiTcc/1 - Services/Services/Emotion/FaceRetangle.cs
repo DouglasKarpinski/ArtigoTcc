@@ -17,6 +17,6 @@ namespace Data.Services.Emotion
         public string Width { get; set; }
 
         [JsonProperty(PropertyName = "height")]
-        public string Heigth { get; set; }
+        public string Height { get; set; }
     }
 }

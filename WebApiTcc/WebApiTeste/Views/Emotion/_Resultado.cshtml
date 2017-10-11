@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WebApiTcc.ViewModel.Emotion.EmotionViewModel>
+
+<div class="col-md-12">
+    <div class="col-md-6 text-center">
+        <label>Imagem original</label>
+        <img src="@ViewBag.File" height="500" width="500"/>
+    </div>
+    <div class="col-md-6 text-center">
+        <label>Imagem analisada</label>
+        <canvas width="500" height="500" id="canvas1"></canvas>
+    </div>
+    <div class="col-md-12 text-center">
+        <h2>Resultados</h2>
+        <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+</div>
+<script>
+    var model = JSON.parse('@Html.Raw(Json.Serialize(Model))');
+
+    var dataSets = [];
+
+    for (var i = 0; i < model.length; i++) {
+        var item = model[i];
+
+        dataSets.push({
+            data: [item.scores.anger, item.scores.contempt, item.scores.disgust, item.scores.fear, item.scores.happiness, item.scores.neutral, item.scores.sadness, item.scores.surprise],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        });
+    }
+
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["Raiva", "Desprezo", "Desgosto", "Medo", "Felicidade", "Neutro", "Tristeza", "Surpresa"],
+            datasets: dataSets
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+    });
+</script>
