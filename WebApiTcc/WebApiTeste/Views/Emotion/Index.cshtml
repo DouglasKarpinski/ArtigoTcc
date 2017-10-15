@@ -1,16 +1,17 @@
 ﻿@{ViewData["Title"] = "Demonstração";}
 <div style="text-align: center;"><h2>@ViewData["Title"]</h2></div>
 
-<div class="table table-responsive">
+<div class="table table-responsive" id="divDemonstracao">
     <div class="col-sm-3"></div>
     <div class="form-group">
         <video autoplay></video>
+        <canvas id='canvas' width='500' height='500' style="display: none"></canvas>
         <br /><br />
         <label class="col-sm-6"></label>
         <div>
             <div class="col-md-10">
                 <label class="col-sm-7"></label>
-                <input type="button" value="Capturar" class="btn btn-primary">
+                <input type="button" id="btnCapturar" value="Capturar" class="btn btn-primary">
             </div>
         </div>
         <div class="col-sm-12 form-group" style="margin-top: 30px">
@@ -18,7 +19,8 @@
                 <label class="col-sm-2"></label>
                 <div class="col-sm-6" style="margin-left: 55px">
                     <label>Você também pode escolher a imagem, se preferir</label>
-                    <input type="file" accept=".jpg, .jpeg, .png" name="file" required />
+                    <input type="file" accept=".jpg, .jpeg, .png" id="file" />
+                    <input type="hidden" id="arquivo" name="file" />
                 </div>
             </div>
         </div>
@@ -31,29 +33,98 @@
         </div>
     </div>
 </div>
+<div id="divResultado" style="display: none">
+
+</div>
+
 @section Scripts{
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-}
-<script>
-    if (navigator.webkitGetUserMedia != null) {
-        var options = {
-            video: true,
-            audio: false
-        };
 
-        //request webcam access
-        navigator.webkitGetUserMedia(options,
-            function (stream) {
-                //get the video tag
-                var video = document.querySelector('video');
-                //turn the stream into a magic URL
-                video.src = window.webkitURL.createObjectURL(stream);
-            },
-            function (e) {
-                console.log("error happened");
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js"></script>
+
+    <script>
+        if (navigator.webkitGetUserMedia != null) {
+            var options = {
+                video: true,
+                audio: false
+            };
+
+            //request webcam access
+            navigator.webkitGetUserMedia(options,
+                function (stream) {
+                    //get the video tag
+                    var video = document.querySelector('video');
+                    //turn the stream into a magic URL
+                    video.src = window.webkitURL.createObjectURL(stream);
+                },
+                function (e) {
+                    console.log("error happened");
+                }
+            );
+        }
+
+        $("#btnCapturar").click(function () {
+            var video = document.querySelector('video');
+            var canvas = document.getElementById('canvas');
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0, 500, 500);
+
+            $("#arquivo").val(canvas.toDataURL("image/jpeg"));
+
+            alert("Imagem capturada com sucesso!");
+        });
+
+        $(document).on('change', "#file", function () {
+            var file = this;
+            if ($(this).val() == '') {
+                $("#arquivo").val("");
+                return;
             }
-        );
-    }
-</script>
+            if (file.files && file.files[0]) {
+                file.files[0];
+                var reader = new FileReader();
+
+                reader.readAsDataURL(file.files[0], 'UTF-8');
+
+                reader.onload = function (e) {
+                    $("#arquivo").val(e.target.result);
+                };
+            }
+        });
+
+        $("#btnEnviar").click(function() {
+            $.post('@Url.Action("PostDemonstration")',
+            {
+                file: $("#arquivo").val()
+            }).done(function (data) {
+                $("#divDemonstracao").slideUp(200);
+                $("#divResultado").html(data).slideDown(200, function() {
+                    var img = document.querySelector('img');
+                    var canvas = document.getElementById('canvas1');
+                    var ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, 500, 500);
+
+                    for (var i = 0; i < model.length; i++) {
+                        var item = model[i].faceRetangle;
+
+                        ctx.lineWidth="4";
+                        ctx.strokeStyle ="#01a5e3";
+                        ctx.rect(item.left, item.top, item.width, item.height);
+                        ctx.stroke();
+                    }
+                });
+            }).fail(function(xhr) {
+                alert(xhr.responseText);
+            });
+        });
+
+        function drawRetangle(context, model) {
+            
+        }
+    </script>
+}
