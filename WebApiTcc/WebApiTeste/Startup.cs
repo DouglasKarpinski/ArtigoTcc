@@ -2,10 +2,12 @@
 using Data.Repository.Categoria;
 using Data.Repository.Estacao;
 using Data.Repository.Home;
+using Data.Repository.Login;
 using Data.Repository.Produto;
 using Data.Services.Categoria;
 using Data.Services.Estacao;
 using Data.Services.Home;
+using Data.Services.Login;
 using Data.Services.Produto;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -40,6 +42,8 @@ namespace WebApiTcc
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
             services.AddTransient<IEstacaoService, EstacaoService>();
             services.AddTransient<IEstacaoRepository, EstacaoRepository>();
+            services.AddTransient<ILoginService, LoginService>();
+            services.AddTransient<ILoginRepository, LoginRepository>();
 
         }
 
