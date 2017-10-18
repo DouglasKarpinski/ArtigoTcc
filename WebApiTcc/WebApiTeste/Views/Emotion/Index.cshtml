@@ -1,40 +1,40 @@
 ﻿@{ViewData["Title"] = "Demonstração";}
 <div style="text-align: center;"><h2>@ViewData["Title"]</h2></div>
 
-<div class="table table-responsive" id="divDemonstracao">
-    <div class="col-sm-3"></div>
-    <div class="form-group">
-        <video autoplay></video>
-        <canvas id='canvas' width='500' height='500' style="display: none"></canvas>
-        <br /><br />
-        <label class="col-sm-6"></label>
-        <div>
-            <div class="col-md-10">
-                <label class="col-sm-7"></label>
-                <input type="button" id="btnCapturar" value="Capturar" class="btn btn-primary">
+<div class="table table-responsive">
+    <div id="divDemonstracao">
+        <div class="col-sm-3"></div>
+        <div class="form-group">
+            <video autoplay></video>
+            <canvas id='canvas' width='500' height='500' style="display: none"></canvas>
+            <br/><br/>
+            <label class="col-sm-6"></label>
+            <div>
+                <div class="col-md-10">
+                    <label class="col-sm-7"></label>
+                    <input type="button" id="btnCapturar" value="Capturar" class="btn btn-primary">
+                </div>
             </div>
-        </div>
-        <div class="col-sm-12 form-group" style="margin-top: 30px">
-            <div class="form-group col-sm-12">
-                <label class="col-sm-2"></label>
-                <div class="col-sm-6" style="margin-left: 55px">
-                    <label>Você também pode escolher a imagem, se preferir</label>
-                    <input type="file" accept=".jpg, .jpeg, .png" id="file" />
-                    <input type="hidden" id="arquivo" name="file" />
+            <div class="col-sm-12 form-group" style="margin-top: 30px">
+                <div class="form-group col-sm-12">
+                    <label class="col-sm-2"></label>
+                    <div class="col-sm-6" style="margin-left: 55px">
+                        <label>Você também pode escolher a imagem, se preferir</label>
+                        <input type="file" accept=".jpg, .jpeg, .png" id="file"/>
+                        <input type="hidden" id="arquivo" name="file"/>
+                    </div>
+                </div>
+            </div>
+            <label class="col-sm-6"></label>
+            <div>
+                <div class="col-md-10">
+                    <label class="col-sm-7"></label>
+                    <input type="button" value="Enviar" id="btnEnviar" class="btn btn-success">
                 </div>
             </div>
         </div>
-        <label class="col-sm-6"></label>
-        <div>
-            <div class="col-md-10">
-                <label class="col-sm-7"></label>
-                <input type="button" value="Enviar" id="btnEnviar" class="btn btn-success">
-            </div>
-        </div>
     </div>
-</div>
-<div id="divResultado" style="display: none">
-
+    <div id="divResultado" style="display: none"></div>
 </div>
 
 @section Scripts{
@@ -48,6 +48,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js"></script>
 
     <script>
+        var localStream;
+
         if (navigator.webkitGetUserMedia != null) {
             var options = {
                 video: true,
@@ -61,6 +63,7 @@
                     var video = document.querySelector('video');
                     //turn the stream into a magic URL
                     video.src = window.webkitURL.createObjectURL(stream);
+                    localStream = stream;
                 },
                 function (e) {
                     console.log("error happened");
@@ -99,9 +102,9 @@
 
         $("#btnEnviar").click(function() {
             $.post('@Url.Action("PostDemonstration")',
-            {
-                file: $("#arquivo").val()
-            }).done(function (data) {
+                {
+                    file: $("#arquivo").val()
+                }).done(function (data) {
                 $("#divDemonstracao").slideUp(200);
                 $("#divResultado").html(data).slideDown(200, function() {
                     var img = document.querySelector('img');
@@ -122,9 +125,5 @@
                 alert(xhr.responseText);
             });
         });
-
-        function drawRetangle(context, model) {
-            
-        }
     </script>
 }

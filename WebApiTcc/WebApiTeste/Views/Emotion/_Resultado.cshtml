@@ -17,28 +17,35 @@
 <script>
     var model = JSON.parse('@Html.Raw(Json.Serialize(Model))');
 
-    var dataSets = [];
+    var dataSets = [],
+        corArray = ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'];
 
     for (var i = 0; i < model.length; i++) {
-        var item = model[i];
+        var item = model[i],
+            cor = corArray[i];
 
         dataSets.push({
+            label: "Face encontrada " + (i + 1),
             data: [item.scores.anger, item.scores.contempt, item.scores.disgust, item.scores.fear, item.scores.happiness, item.scores.neutral, item.scores.sadness, item.scores.surprise],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                cor,
+                cor,
+                cor,
+                cor,
+                cor,
+                cor,
+                cor,
+                cor
             ],
             borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                cor,
+                cor,
+                cor,
+                cor,
+                cor,
+                cor,
+                cor,
+                cor
             ],
             borderWidth: 1
         });
