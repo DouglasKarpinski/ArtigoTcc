@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -25,8 +28,26 @@ namespace Data.Services.Emotion
             file = file.Replace("data:image/jpeg;base64,", "");
             file = file.Replace("data:image/png;base64,", "");
 
-            var content = JsonConvert.SerializeObject(new {base64String = file});
+            var byteArray = Convert.FromBase64String(file);
+
+            using (var ms = new MemoryStream(byteArray))
+            {
+                var image = Image.FromStream(ms);
+                var bmp = new Bitmap(image, 500, 500);
+
+                var memStream = new MemoryStream();
+                bmp.Save(memStream, ImageFormat.Jpeg);
+
+                var novoByteArray = memStream.ToArray();
+
+                var novaBase64String = Convert.ToBase64String(novoByteArray);
+
+                file = novaBase64String;
+            }
+
+            var content = JsonConvert.SerializeObject(new { base64String = file });
             var buffer = Encoding.UTF8.GetBytes(content);
+
             var byteContent = new ByteArrayContent(buffer);
 
             byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");

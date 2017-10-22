@@ -56,17 +56,14 @@
                 audio: false
             };
 
-            //request webcam access
             navigator.webkitGetUserMedia(options,
                 function (stream) {
-                    //get the video tag
                     var video = document.querySelector('video');
-                    //turn the stream into a magic URL
                     video.src = window.webkitURL.createObjectURL(stream);
                     localStream = stream;
                 },
                 function (e) {
-                    console.log("error happened");
+                    console.log("Ops...........algo errado aconteceu!");
                 }
             );
         }
@@ -119,8 +116,13 @@
                         ctx.strokeStyle ="#01a5e3";
                         ctx.rect(item.left, item.top, item.width, item.height);
                         ctx.stroke();
+                        ctx.fillStyle = "#abc";
+                        ctx.font="20px Georgia";
+                        ctx.fillStyle = "#01a5e3";
+                        ctx.fillText("Face " + (i + 1), item.left + 5, item.top + 20);
                     }
                 });
+                localStream.getVideoTracks()[0].stop();
             }).fail(function(xhr) {
                 alert(xhr.responseText);
             });

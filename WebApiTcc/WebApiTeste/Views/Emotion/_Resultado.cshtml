@@ -3,7 +3,7 @@
 <div class="col-md-12">
     <div class="col-md-6 text-center">
         <label>Imagem original</label>
-        <img src="@ViewBag.File" height="500" width="500"/>
+        <img src="@ViewBag.File" height="500" width="500" />
     </div>
     <div class="col-md-6 text-center">
         <label>Imagem analisada</label>
@@ -12,6 +12,12 @@
     <div class="col-md-12 text-center">
         <h2>Resultados</h2>
         <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+    <div class="col-md-12">
+        <br/><br/>
+        <div class="col-md-12" align="right">
+            <a class="btn btn-primary" asp-action="Index">Voltar</a>
+        </div>
     </div>
 </div>
 <script>
