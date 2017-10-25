@@ -1,10 +1,12 @@
 ﻿using Data.Repository;
 using Data.Repository.Categoria;
+using Data.Repository.ConsultaSatisfacao;
 using Data.Repository.Estacao;
 using Data.Repository.Home;
 using Data.Repository.Login;
 using Data.Repository.Produto;
 using Data.Services.Categoria;
+using Data.Services.ConsultaSatisfacao;
 using Data.Services.Emotion;
 using Data.Services.Estacao;
 using Data.Services.Home;
@@ -46,6 +48,8 @@ namespace WebApiTcc
             services.AddTransient<ILoginService, LoginService>();
             services.AddTransient<ILoginRepository, LoginRepository>();
             services.AddTransient<IEmotionService, EmotionService>();
+            services.AddTransient<IConsultaSatisfacaoService, ConsultaSatisfacaoService>();
+            services.AddTransient<IConsultaSatisfacaoRepository, ConsultaSatisfacaoRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

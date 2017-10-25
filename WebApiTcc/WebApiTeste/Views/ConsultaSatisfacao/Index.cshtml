@@ -1,0 +1,59 @@
+﻿@model WebApiTcc.ViewModel.ConsultaSatisfacao.ConsultaSatisfacaoViewModel
+@{
+    ViewData["Title"] = "Consulta Satisfação";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row" id="divBuscar">
+    <div class="table table-responsive">
+        <div class="panel-body">
+            <div class="form-group col-md-12" style="visibility: hidden">
+                <button class="btn btn-primary pull-right clear" onclick="cadastrar()" style="margin-left: -13px" type="button"><i class="fa fa-plus-circle"></i> Novo </button>
+            </div>
+            <div class="form col-md-12">
+                <form asp-action="Post" class="form-horizontal col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Estação</label>
+                        <div class="col-md-4">
+                            <select single="" class="form-control" name="IdEstacao" required>
+                                <option value="">Selecione</option>
+                                @foreach (var item in Model.ComboEstacao)
+                                {
+                                    <option value="@item.IdEstacao">@item.Nome</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Período</label>
+                        <div class="col-md-4">
+                            <div class="input-group input-large custom-date-range" data-date-format="dd/mm/yyyy">
+                                <input type="text" class="form-control text-center dp" placeholder="Inicial" name="DataInicial">
+                                <span class="input-group-addon">até</span>
+                                <input type="text" class="form-control text-center dp" placeholder="Final" name="DataFinal">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-md-4 col-sm-offset-3">
+                        <button class="buscar btn btn-primary pull-right col-md-6" id="btnBuscar" type="submit"><i class="fa fa-search "></i> Buscar </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.12/jquery.mask.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.12/jquery.mask.min.js"></script>
+    
+    <script>
+        $(".dp").mask("00/00/0000");
+    </script>
+}
+
+
