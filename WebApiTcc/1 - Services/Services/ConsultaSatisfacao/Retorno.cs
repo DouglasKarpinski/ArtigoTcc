@@ -4,8 +4,9 @@ using System.Text;
 
 namespace Data.Services.ConsultaSatisfacao
 {
-    public interface IConsultaSatisfacaoService
+    public class Retorno
     {
-        Retorno Get(int idEstacao, DateTime? dataInicial, DateTime? dataFinal);
+        public int IdEstacao { get; set; }
+        public List<Emotion.Emotion> Emotion { get; set; }
     }
 }

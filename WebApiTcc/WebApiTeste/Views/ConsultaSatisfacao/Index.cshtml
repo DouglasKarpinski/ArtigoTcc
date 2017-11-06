@@ -12,11 +12,11 @@
                 <button class="btn btn-primary pull-right clear" onclick="cadastrar()" style="margin-left: -13px" type="button"><i class="fa fa-plus-circle"></i> Novo </button>
             </div>
             <div class="form col-md-12">
-                <form asp-action="Post" class="form-horizontal col-md-12">
+                <form class="form-horizontal col-md-12">
                     <div class="form-group">
                         <label class="control-label col-md-4">Estação</label>
                         <div class="col-md-4">
-                            <select single="" class="form-control" name="IdEstacao" required>
+                            <select single="" class="form-control" id="ddlEstacao" name="IdEstacao" required>
                                 <option value="">Selecione</option>
                                 @foreach (var item in Model.ComboEstacao)
                                 {
@@ -29,20 +29,21 @@
                         <label class="control-label col-md-4">Período</label>
                         <div class="col-md-4">
                             <div class="input-group input-large custom-date-range" data-date-format="dd/mm/yyyy">
-                                <input type="text" class="form-control text-center dp" placeholder="Inicial" name="DataInicial">
+                                <input type="text" class="form-control text-center dp" id="dataInicial" placeholder="Inicial" name="DataInicial">
                                 <span class="input-group-addon">até</span>
-                                <input type="text" class="form-control text-center dp" placeholder="Final" name="DataFinal">
+                                <input type="text" class="form-control text-center dp" id="dataFinal" placeholder="Final" name="DataFinal">
                             </div>
                         </div>
                     </div>
                     <div class="row col-md-4 col-sm-offset-3">
-                        <button class="buscar btn btn-primary pull-right col-md-6" id="btnBuscar" type="submit"><i class="fa fa-search "></i> Buscar </button>
+                        <button class="buscar btn btn-primary pull-right col-md-6" id="btnBuscar" type="button"><i class="fa fa-search "></i> Buscar </button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<div id="divRetorno"></div>
 @section Scripts{
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
@@ -53,6 +54,23 @@
     
     <script>
         $(".dp").mask("00/00/0000");
+
+        $("#btnBuscar").click(function () {
+            var model = {
+                IdEstacao: $("#ddlEstacao").val(),
+                DataInicial: $("#dataInicial").val(),
+                DataFinal: $("#dataFinal").val()
+            }
+
+            $.post('@Url.Action("Post")', model
+            ).done(function (data) {
+                $("#divBuscar").slideUp(200, function() {
+                    $("#divRetorno").html(data).slideDown(200);
+                });
+            }).fail(function(xhr) {
+                alert(xhr.responseText);
+            });
+        });
     </script>
 }
 

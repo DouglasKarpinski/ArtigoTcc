@@ -26,8 +26,8 @@ namespace Data.Repository.ConsultaSatisfacao
             {
                 string sQuery = "SELECT * FROM [dbo].[ProdutoEstacaoImagem]"
                                 + "WHERE IdEstacao = @IdEstacao "
-                                + "AND DataCadastro >= @DataInicial "
-                                + "AND DataCadastro <= @DataFinal";
+                                + "AND ((DataCadastro >= @DataInicial) OR @DataInicial IS NULL) "
+                                + "AND ((DataCadastro <= @DataFinal) OR @DataFinal IS NULL)";
                 dbConnection.Open();
                 return dbConnection.Query<Services.ConsultaSatisfacao.ConsultaSatisfacao>(sQuery, new { IdEstacao = idEstacao, DataInicial = dataInicial, DataFinal = dataFinal });
             }

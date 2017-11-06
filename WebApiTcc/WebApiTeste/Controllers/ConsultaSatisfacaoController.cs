@@ -6,6 +6,7 @@ using Data.Services.ConsultaSatisfacao;
 using Data.Services.Estacao;
 using Microsoft.AspNetCore.Mvc;
 using WebApiTcc.ViewModel.ConsultaSatisfacao;
+using WebApiTcc.ViewModel.Emotion;
 using WebApiTcc.ViewModel.Estacao;
 
 namespace WebApiTcc.Controllers
@@ -44,7 +45,7 @@ namespace WebApiTcc.Controllers
                     }
                 }
 
-                return View("Index", new ConsultaSatisfacaoViewModel {ComboEstacao = estacao});
+                return View("Index", new ConsultaSatisfacaoViewModel { ComboEstacao = estacao });
             }
             catch (Exception e)
             {
@@ -57,6 +58,40 @@ namespace WebApiTcc.Controllers
             try
             {
                 var consultaSatisfacaoRequest = _consultaSatisfacaoService.Get(consultaSatisfacao.IdEstacao, consultaSatisfacao.DataInicial, consultaSatisfacao.DataInicial);
+
+                if (consultaSatisfacaoRequest != null)
+                {
+                    var model = new ConsultaSatisfacaoViewModel
+                    {
+                        Retorno = new RetornoViewModel
+                        {
+                            IdEstacao = consultaSatisfacaoRequest.IdEstacao,
+                            Emotion = consultaSatisfacaoRequest.Emotion.Select(item => new EmotionViewModel
+                            {
+                                FaceRetangle = new FaceRectangleViewModel
+                                {
+                                    Height = decimal.Parse(item.FaceRetangle.Height),
+                                    Left = decimal.Parse(item.FaceRetangle.Left),
+                                    Top = decimal.Parse(item.FaceRetangle.Top),
+                                    Width = decimal.Parse(item.FaceRetangle.Width)
+                                },
+                                Scores = new ScoresViewModel
+                                {
+                                    Anger = item.Scores.Anger,
+                                    Contempt = item.Scores.Contempt,
+                                    Disgust = item.Scores.Disgust,
+                                    Fear = item.Scores.Fear,
+                                    Happiness = item.Scores.Happiness,
+                                    Neutral = item.Scores.Neutral,
+                                    Sadness = item.Scores.Sadness,
+                                    Surprise = item.Scores.Surprise
+                                }
+                            })
+                        }
+                    };
+
+                    return PartialView("_Retorno", model);
+                }
 
                 return Ok();
             }
