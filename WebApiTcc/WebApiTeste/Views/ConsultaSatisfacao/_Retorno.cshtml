@@ -3,5 +3,106 @@
     ViewData["Title"] = "_Retorno";
 }
 
-<h2>_Retorno</h2>
+<div class="form-group col-md-12" style="visibility: hidden"></div>
+<div class="row">
+    <div class="table table-responsive">
+        <table class="table table-hover">
+            @if (Model.Retorno != null)
+            {
+                <tr>
+                    <th>Estação</th>
+                    <th>Descricao Estação</th>
+                    <th>Produto</th>
+                    <th>Descrição Produto</th>
+                    <th>Imagens Analisadas</th>
+                </tr>
+                <tr>
+                    <td class="col-md-2.5">@Model.Retorno.Estacao.Nome</td>
+                    <td class="col-md-2.5">@Model.Retorno.Estacao.Descricao</td>
+                    <td class="col-md-2.5">@Model.Retorno.Estacao.Produto.Nome</td>
+                    <td class="col-md-2.5">@Model.Retorno.Estacao.Produto.Descricao</td>
+                    <td class="col-md-2.5">@Model.Retorno.QuantidadeImagensCapturadas</td>
+                </tr>
+
+            }
+            else
+            {
+                <tr>Nenhum resultado foi encontrado</tr>
+            }
+
+        </table>
+        @if (Model.Retorno != null)
+        {
+            <div class="panel-body">
+                <div class="form col-md-12">
+                    <label class="col-md-4"></label>
+                    <div class="form-group">
+                        <label class="control-label col-md-4" style="margin-left: 40px;">Gráfico da média dos resultados</label>
+                    </div>
+                </div>
+                <div class="form col-md-12">
+                    <label class="col-md-2"></label>
+                    <div class="panel panel-default col-md-3" style="width: 700px; height: 700px">
+                        <canvas id="myChart" width="100" height="100"></canvas>
+                    </div>
+                </div>
+            </div>   
+        }
+    </div>
+    <div class="col-md-12">
+        <br />
+        <div class="col-md-12" align="right">
+            <a class="btn btn-primary" asp-action="Index">Voltar</a>
+        </div>
+    </div>
+</div>
+<script>
+    var model = JSON.parse('@Html.Raw(Json.Serialize(Model.Retorno))');
+
+    if (model) {
+        dataSet = {
+            label: "Resultados",
+            data: [model.mediaRaiva, model.mediaDesprezo, model.mediaDesgosto, model.mediaMedo, model.mediaFelicidade, model.mediaNeutro, model.mediaTristeza, model.mediaSurpresa],
+            backgroundColor: [
+                'rgb(46, 204, 115)',
+                'rgb(46, 204, 115)',
+                'rgb(46, 204, 115)',
+                'rgb(46, 204, 115)',
+                'rgb(46, 204, 115)',
+                'rgb(46, 204, 115)',
+                'rgb(46, 204, 115)',
+                'rgb(46, 204, 115)',
+            ],
+            borderColor: [
+                'rgb(46, 204, 115)',
+                'rgb(46, 204, 115)',
+                'rgb(46, 204, 115)',
+                'rgb(46, 204, 115)',
+                'rgb(46, 204, 115)',
+                'rgb(46, 204, 115)',
+                'rgb(46, 204, 115)',
+                'rgb(46, 204, 115)',
+            ],
+            borderWidth: 1
+        };
+
+        var ctx = document.getElementById("myChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Raiva", "Desprezo", "Desgosto", "Medo", "Felicidade", "Neutro", "Tristeza", "Surpresa"],
+                datasets: [dataSet]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });   
+    }
+</script>
 

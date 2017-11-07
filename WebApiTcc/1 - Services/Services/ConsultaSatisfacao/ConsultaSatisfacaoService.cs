@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using Data.Repository.Produto;
+using Data.Services.Estacao;
 using Newtonsoft.Json;
 
 namespace Data.Services.ConsultaSatisfacao
@@ -11,12 +13,16 @@ namespace Data.Services.ConsultaSatisfacao
     public class ConsultaSatisfacaoService : IConsultaSatisfacaoService
     {
         private readonly IConsultaSatisfacaoRepository _consultaSatisfacaoRepository;
+        private readonly IEstacaoRepository _estacaoRepository;
+        private readonly IProdutoRepository _produtoRepository;
         private const string _emotionWebApi = "http://localhost:51988/api/emotion";
         private readonly string _token = "tokenzao RU1PVElPTldFQkFQSUxFT05BUkRPRURPVUdMQVNUQ0MyMDE3";
 
-        public ConsultaSatisfacaoService(IConsultaSatisfacaoRepository consultaSatisfacaoRepository)
+        public ConsultaSatisfacaoService(IConsultaSatisfacaoRepository consultaSatisfacaoRepository, IEstacaoRepository estacaoRepository, IProdutoRepository produtoRepository)
         {
             _consultaSatisfacaoRepository = consultaSatisfacaoRepository;
+            _estacaoRepository = estacaoRepository;
+            _produtoRepository = produtoRepository;
         }
 
         public Retorno Get(int idEstacao, DateTime? dataInicial, DateTime? dataFinal)
@@ -43,7 +49,13 @@ namespace Data.Services.ConsultaSatisfacao
 
                 var responseContent = response.Content.ReadAsStringAsync().Result;
 
-                return JsonConvert.DeserializeObject<Retorno>(responseContent);
+                var retorno =  JsonConvert.DeserializeObject<Retorno>(responseContent);
+
+                retorno.Estacao = _estacaoRepository.GetById(idEstacao);
+
+                retorno.Estacao.Produto = _produtoRepository.GetById(retorno.Estacao.IdProduto);
+
+                return retorno;
             }
 
             return null;

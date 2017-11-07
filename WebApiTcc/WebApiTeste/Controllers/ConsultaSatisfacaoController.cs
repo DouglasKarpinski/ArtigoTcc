@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebApiTcc.ViewModel.ConsultaSatisfacao;
 using WebApiTcc.ViewModel.Emotion;
 using WebApiTcc.ViewModel.Estacao;
+using WebApiTcc.ViewModel.Produto;
 
 namespace WebApiTcc.Controllers
 {
@@ -66,6 +67,18 @@ namespace WebApiTcc.Controllers
                         Retorno = new RetornoViewModel
                         {
                             IdEstacao = consultaSatisfacaoRequest.IdEstacao,
+                            Estacao = new EstacaoViewModel
+                            {
+                              IdEstacao  = consultaSatisfacaoRequest.Estacao.IdEstacao,
+                              Nome = consultaSatisfacaoRequest.Estacao.Nome,
+                              Descricao = consultaSatisfacaoRequest.Estacao.Descricao,
+                              Produto = new ProdutoViewModel
+                              {
+                                  IdProduto = consultaSatisfacaoRequest.Estacao.IdProduto,
+                                  Nome = consultaSatisfacaoRequest.Estacao.Produto.Nome,
+                                  Descricao = consultaSatisfacaoRequest.Estacao.Produto.Descricao
+                              }
+                            },
                             Emotion = consultaSatisfacaoRequest.Emotion.Select(item => new EmotionViewModel
                             {
                                 FaceRetangle = new FaceRectangleViewModel
@@ -93,7 +106,7 @@ namespace WebApiTcc.Controllers
                     return PartialView("_Retorno", model);
                 }
 
-                return Ok();
+                return PartialView("_Retorno", new ConsultaSatisfacaoViewModel());
             }
             catch (Exception e)
             {

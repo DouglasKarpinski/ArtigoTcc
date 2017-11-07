@@ -11,20 +11,20 @@
         <div class="col-md-10">
             <input asp-for="Nome" class="form-control" value="@Model.Nome">
             <span asp-validation-for="Nome" class="text-danger" />
+            <label></label>
         </div>
-        <br>
         <label asp-for="Descricao" class="col-md-2 control-label">Descricao</label>
         <div class="col-md-10">
             <input asp-for="Descricao" class="form-control" value="@Model.Descricao">
             <span asp-validation-for="Descricao" class="text-danger" />
+            <label></label>
         </div>
-        <br>
         <label asp-for="IdCategoria" class="col-md-2 control-label">Categoria</label>
         <div class="col-md-10">
             <input asp-for="IdCategoria" class="form-control" value="@Model.IdCategoria">
             <span asp-validation-for="IdCategoria" class="text-danger" />
+            <label></label>
         </div>
-        <br>
         <label asp-for="Ativo" class="col-md-2 control-label">Ativo</label>
         <div class="radio col-md-10">
             <label><input asp-for="Ativo" value="true" type="radio">Sim</label>

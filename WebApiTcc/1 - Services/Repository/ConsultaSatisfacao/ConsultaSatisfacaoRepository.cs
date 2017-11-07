@@ -32,5 +32,18 @@ namespace Data.Repository.ConsultaSatisfacao
                 return dbConnection.Query<Services.ConsultaSatisfacao.ConsultaSatisfacao>(sQuery, new { IdEstacao = idEstacao, DataInicial = dataInicial, DataFinal = dataFinal });
             }
         }
+
+        public ProdutoEstacaoImagem Post(int idEstacao, DateTime dataCadastro)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                string sQuery = "INSERT INTO [dbo].[ProdutoEstacaoImagem] (IdEstacao, DataCadastro)"
+                                + " VALUES(@IdEstacao, @DataCadastro)";
+                dbConnection.Open();
+                dbConnection.Execute(sQuery, new {IdEstacao = idEstacao, DataCadastro = dataCadastro});
+
+                return dbConnection.Query<ProdutoEstacaoImagem>("SELECT TOP 1 * FROM [dbo].[ProdutoEstacaoImagem] ORDER BY IdProdutoEstacaoImagem DESC ").FirstOrDefault();
+            }
+        }
     }
 }

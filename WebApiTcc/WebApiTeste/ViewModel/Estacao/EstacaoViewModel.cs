@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApiTcc.ViewModel.Produto;
 
 namespace WebApiTcc.ViewModel.Estacao
 {
@@ -13,5 +14,7 @@ namespace WebApiTcc.ViewModel.Estacao
         public bool Ativo { get; set; }
         public int IdProduto { get; set; }
         public string NomeProduto { get; set; }
+
+        public ProdutoViewModel Produto { get; set; }
     }
 }

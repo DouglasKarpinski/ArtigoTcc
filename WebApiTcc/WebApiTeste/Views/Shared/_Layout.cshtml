@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var data = $"{DateTime.Now.Day}/{DateTime.Now.Month}/{DateTime.Now.Year}";
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -37,7 +40,7 @@
                         <ul class="dropdown-menu">
                             <li><a asp-controller="Categoria" asp-action="Index">Categorias</a></li>
                             <li><a asp-controller="Produto" asp-action="Index">Produtos</a></li>
-                            <li><a asp-controller="Estacao" asp-action="Index">Estacao</a></li>
+                            <li><a asp-controller="Estacao" asp-action="Index">Estação</a></li>
                             <li><a asp-controller="ConsultaSatisfacao" asp-action="Index">Consulta de Satisfação</a></li>
                         </ul>
                     </li>
@@ -54,7 +57,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.ToShortDateString() - TCC, Ferramenta de Analíse de Satisfação.</p>
+            <p>&copy; @data - TCC, Ferramenta de Analíse de Satisfação.</p>
         </footer>
     </div>
 

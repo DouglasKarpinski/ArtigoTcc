@@ -11,7 +11,10 @@
     </div>
     <div class="col-md-12 text-center">
         <h2>Resultados</h2>
-        <canvas id="myChart" width="400" height="400"></canvas>
+        <label class="col-md-2"></label>
+        <div class="panel panel-default col-md-3" style="width: 700px; height: 700px">
+            <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
     </div>
     <div class="col-md-12">
         <br/><br/>
@@ -24,7 +27,7 @@
     var model = JSON.parse('@Html.Raw(Json.Serialize(Model))');
 
     var dataSets = [],
-        corArray = ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'];
+        corArray = ['rgb(240, 52, 52)', 'rgb(0, 230, 64)', 'rgb(78, 205, 196)', 'rgb(247, 202, 24)', 'rgb(102, 51, 153)', 'rgb(65, 131, 215)'];
 
     for (var i = 0; i < model.length; i++) {
         var item = model[i],

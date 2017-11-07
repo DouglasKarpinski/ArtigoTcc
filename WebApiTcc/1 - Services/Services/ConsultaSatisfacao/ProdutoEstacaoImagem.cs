@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Data.Services.ConsultaSatisfacao
 {
-    public class Retorno
+    public class ProdutoEstacaoImagem
     {
+        public int IdProdutoEstacaoImagem { get; set; }
         public int IdEstacao { get; set; }
-        public Estacao.Estacao Estacao { get; set; }
-        public List<Emotion.Emotion> Emotion { get; set; }
+        public DateTime DataCadastro { get; set; }
     }
 }

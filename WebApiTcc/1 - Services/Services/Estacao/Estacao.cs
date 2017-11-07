@@ -12,5 +12,7 @@ namespace Data.Services.Estacao
         public bool Ativo { get; set; }
         public int IdProduto { get; set; }
         public string NomeProduto { get; set; }
+
+        public Produto.Produto Produto { get; set; }
     }
 }

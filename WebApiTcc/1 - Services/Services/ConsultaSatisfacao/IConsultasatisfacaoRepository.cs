@@ -7,5 +7,6 @@ namespace Data.Services.ConsultaSatisfacao
     public interface IConsultaSatisfacaoRepository
     {
         IEnumerable<ConsultaSatisfacao> Get(int idEstacao, DateTime? dataInicial, DateTime? dataFinal);
+        ProdutoEstacaoImagem Post(int idEstacao, DateTime dataCadastro);
     }
 }
