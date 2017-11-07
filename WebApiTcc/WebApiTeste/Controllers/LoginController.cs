@@ -36,7 +36,7 @@ namespace WebApiTcc.Controllers
                 var retorno = _loginService.Post(usuario);
 
                 if (retorno == null)
-                   return RedirectToAction("Index");
+                   return RedirectToAction("Error");
 
 
                 return RedirectToAction("About", "home");
@@ -45,6 +45,11 @@ namespace WebApiTcc.Controllers
             {
                 return RedirectToAction("Index");
             }
+        }
+
+        public IActionResult Error()
+        {
+            return View("ErrorPage");
         }
     }
 }

@@ -1,0 +1,38 @@
+﻿@{
+    Layout = null;
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<div class="container">
+    <div id="loginbox" style="margin-top:180px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <form asp-action="Index">
+                <div style="padding-top: 30px" class="panel-body">
+                    <div class="alert alert-danger" align="center">
+                        <strong>Error!</strong> Usuario ou Senha incorretos! verifique!
+                    </div>
+                    <div style="margin-top: 10px" class="form-group">
+                        <div class="col-sm-12 controls">
+                            <div class="col-sm-5"></div>
+                            <button type="submit" class="btn btn-lg btn-info btn-block">Voltar </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
