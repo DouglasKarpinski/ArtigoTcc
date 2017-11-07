@@ -21,7 +21,7 @@
         </div>
         <label asp-for="IdProduto" class="col-md-2 control-label">Produto</label>
         <div class="col-md-10">
-            <select class="form-control" asp-for="IdProduto" asp-items="@(new SelectList(Model.Produto,"IdProduto","Nome"))">
+            <select class="form-control" asp-for="IdProduto" asp-items="@(new SelectList(Model.Produtos,"IdProduto","Nome"))">
                 <option>Selecione</option>
             </select>
         </div>
