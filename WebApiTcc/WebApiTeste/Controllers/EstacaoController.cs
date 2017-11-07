@@ -56,7 +56,7 @@ namespace WebApiTcc.Controllers
             var listProduto = _produtoService.GetAll();
             var estacao = new EstacaoViewModel()
             {
-                Produto = listProduto
+                Produtos = listProduto
             };
             return View("Create", estacao);
         }
@@ -103,7 +103,7 @@ namespace WebApiTcc.Controllers
                         Descricao = retorno.Descricao,
                         Ativo = retorno.Ativo,
                         IdProduto = retorno.IdProduto,
-                        Produto = listProduto
+                        Produtos = listProduto
                     };
 
                     return View("Edit", estacao);
