@@ -58,7 +58,7 @@ namespace WebApiTcc.Controllers
         {
             try
             {
-                var consultaSatisfacaoRequest = _consultaSatisfacaoService.Get(consultaSatisfacao.IdEstacao, consultaSatisfacao.DataInicial, consultaSatisfacao.DataInicial);
+                var consultaSatisfacaoRequest = _consultaSatisfacaoService.Get(consultaSatisfacao.IdEstacao, consultaSatisfacao.DataInicial, consultaSatisfacao.DataFinal);
 
                 if (consultaSatisfacaoRequest != null)
                 {
