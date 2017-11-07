@@ -20,8 +20,9 @@
         <br>
         <label asp-for="IdUnidadeNegocio" class="col-md-2 control-label">Unidade</label>
         <div class="col-md-10">
-            <input asp-for="IdUnidadeNegocio" class="form-control">
-            <span asp-validation-for="IdUnidadeNegocio" class="text-danger" />
+            <select class="form-control" asp-for="IdUnidadeNegocio" asp-items="@(new SelectList(Model.UnidadeNegocio,"IdUnidadeNegocio","Nome"))">
+                <option>Selecione</option>
+            </select>
         </div>
         <br>
         <label asp-for="Ativo" class="col-md-2 control-label">Ativo</label>

@@ -10,19 +10,20 @@
         <label asp-for="Nome" class="col-md-2 control-label">Nome</label>
         <div class="col-md-10">
             <input asp-for="Nome" class="form-control" value="@Model.Nome">
-            <span asp-validation-for="Nome" class="text-danger"/>
+            <span asp-validation-for="Nome" class="text-danger" />
         </div>
         <br>
         <label asp-for="Descricao" class="col-md-2 control-label">Descricao</label>
         <div class="col-md-10">
             <input asp-for="Descricao" class="form-control" value="@Model.Descricao">
-            <span asp-validation-for="Descricao" class="text-danger"/>
+            <span asp-validation-for="Descricao" class="text-danger" />
         </div>
         <br>
         <label asp-for="IdUnidadeNegocio" class="col-md-2 control-label">Unidade</label>
         <div class="col-md-10">
-            <input asp-for="IdUnidadeNegocio" class="form-control" value="@Model.IdUnidadeNegocio">
-            <span asp-validation-for="IdUnidadeNegocio" class="text-danger"/>
+            <select class="form-control" asp-for="IdUnidadeNegocio" asp-items="@(new SelectList(Model.UnidadeNegocio,"IdUnidadeNegocio","Nome"))">
+                <option>Selecione</option>
+            </select>
         </div>
         <br>
         <label asp-for="Ativo" class="col-md-2 control-label">Ativo</label>

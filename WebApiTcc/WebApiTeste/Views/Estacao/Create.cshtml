@@ -18,10 +18,11 @@
             <span asp-validation-for="Descricao" class="text-danger" />
         </div>
         <br>
-        <label asp-for="IdProduto" class="col-md-2 control-label">Unidade</label>
+        <label asp-for="IdProduto" class="col-md-2 control-label">Produto</label>
         <div class="col-md-10">
-            <input asp-for="IdProduto" class="form-control">
-            <span asp-validation-for="IdProduto" class="text-danger" />
+            <select class="form-control" asp-for="IdProduto" asp-items="@(new SelectList(Model.Produto,"IdProduto","Nome"))">
+                <option>Selecione</option>
+            </select>
         </div>
         <br>
         <label asp-for="Ativo" class="col-md-2 control-label">Ativo</label>
