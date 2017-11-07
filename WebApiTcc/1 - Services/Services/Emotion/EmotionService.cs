@@ -14,7 +14,7 @@ namespace Data.Services.Emotion
 {
     public class EmotionService : IEmotionService
     {
-        private const string _emotionWebApi = "http://localhost:51988/api/emotion/";
+        private const string _emotionWebApi = "http://emotionwebapi.azurewebsites.net/api/emotion/";
         private readonly string _token = "tokenzao RU1PVElPTldFQkFQSUxFT05BUkRPRURPVUdMQVNUQ0MyMDE3";
         private readonly IConsultaSatisfacaoRepository _consultaSatisfacaoRepository;
 

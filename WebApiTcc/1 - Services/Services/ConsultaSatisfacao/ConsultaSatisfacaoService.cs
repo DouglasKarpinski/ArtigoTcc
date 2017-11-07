@@ -15,7 +15,7 @@ namespace Data.Services.ConsultaSatisfacao
         private readonly IConsultaSatisfacaoRepository _consultaSatisfacaoRepository;
         private readonly IEstacaoRepository _estacaoRepository;
         private readonly IProdutoRepository _produtoRepository;
-        private const string _emotionWebApi = "http://localhost:51988/api/emotion";
+        private const string _emotionWebApi = "http://emotionwebapi.azurewebsites.net/api/emotion/";
         private readonly string _token = "tokenzao RU1PVElPTldFQkFQSUxFT05BUkRPRURPVUdMQVNUQ0MyMDE3";
 
         public ConsultaSatisfacaoService(IConsultaSatisfacaoRepository consultaSatisfacaoRepository, IEstacaoRepository estacaoRepository, IProdutoRepository produtoRepository)
