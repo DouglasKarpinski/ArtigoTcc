@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using Data.Services.Categoria;
 using WebApiTcc.ViewModel.Produto;
 
 namespace WebApiTcc.Controllers
@@ -9,10 +10,12 @@ namespace WebApiTcc.Controllers
     public class ProdutoController : Controller
     {
         private readonly IProdutoService _produtoService;
+        private readonly ICategoriaService _categoriaService;
 
-        public ProdutoController(IProdutoService produtoService)
+        public ProdutoController(IProdutoService produtoService, ICategoriaService categoriaService)
         {
             _produtoService = produtoService;
+            _categoriaService = categoriaService;
         }
 
         public IActionResult Index()
@@ -39,7 +42,12 @@ namespace WebApiTcc.Controllers
 
         public IActionResult Create()
         {
-            return View("Create");
+            var listCategorias = _categoriaService.GetAll();
+            var produto = new ProdutoViewModel()
+            {
+                Categoria = listCategorias
+            };
+            return View("Create", produto);
         }
 
         public IActionResult Post(ProdutoViewModel produtoViewModel)
@@ -74,6 +82,7 @@ namespace WebApiTcc.Controllers
                 var retorno = _produtoService.GetById(id);
                 if (retorno != null)
                 {
+                    var listCategorias = _categoriaService.GetAll();
                     var produto = new ProdutoViewModel()
                     {
 
@@ -81,7 +90,8 @@ namespace WebApiTcc.Controllers
                         Nome = retorno.Nome,
                         Descricao = retorno.Descricao,
                         Ativo = retorno.Ativo,
-                        IdCategoria = retorno.IdCategoria
+                        IdCategoria = retorno.IdCategoria,
+                        Categoria = listCategorias
                     };
 
                     return View("Edit", produto);

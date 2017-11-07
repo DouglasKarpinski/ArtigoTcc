@@ -21,9 +21,9 @@
         </div>
         <label asp-for="IdUnidadeNegocio" class="col-md-2 control-label">Unidade</label>
         <div class="col-md-10">
-            <input asp-for="IdUnidadeNegocio" class="form-control" value="@Model.IdUnidadeNegocio">
-            <span asp-validation-for="IdUnidadeNegocio" class="text-danger"/>
-            <label></label>
+            <select class="form-control" asp-for="IdUnidadeNegocio" asp-items="@(new SelectList(Model.UnidadeNegocio,"IdUnidadeNegocio","Nome"))">
+                <option>Selecione</option>
+            </select>
         </div>
         <label asp-for="Ativo" class="col-md-2 control-label">Ativo</label>
         <div class="radio col-md-10">

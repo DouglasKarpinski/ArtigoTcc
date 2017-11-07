@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Data.Services.UnidadeNegocio;
 using WebApiTcc.ViewModel.Categoria;
 
 namespace WebApiTcc.Controllers
@@ -10,11 +11,13 @@ namespace WebApiTcc.Controllers
     public class CategoriaController : Controller
     {
         private readonly ICategoriaService _categoriaService;
+        private readonly IUnidadeNegocioService _unidadeNegocioService;
 
 
-        public CategoriaController(ICategoriaService categoriaService)
+        public CategoriaController(ICategoriaService categoriaService, IUnidadeNegocioService unidadeNegocioService)
         {
             _categoriaService = categoriaService;
+            _unidadeNegocioService = unidadeNegocioService;
         }
 
         public IActionResult Index()
@@ -48,7 +51,13 @@ namespace WebApiTcc.Controllers
 
         public IActionResult Create()
         {
-            return View("Create");
+            var listUnidadeNegocio = _unidadeNegocioService.GetAll();
+
+            var categoria = new CategoriaViewModel()
+            {
+                UnidadeNegocio = listUnidadeNegocio
+            };
+            return View("Create", categoria);
         }
 
         [HttpPost]
@@ -85,6 +94,8 @@ namespace WebApiTcc.Controllers
                 var retorno = _categoriaService.GetById(id);
                 if (retorno != null)
                 {
+                    var listUnidadeNegocio = _unidadeNegocioService.GetAll();
+
                     var categoria = new CategoriaViewModel()
                     {
 
@@ -92,7 +103,8 @@ namespace WebApiTcc.Controllers
                         Nome = retorno.Nome,
                         Descricao = retorno.Descricao,
                         Ativo = retorno.Ativo,
-                        IdUnidadeNegocio = retorno.IdUnidadeNegocio
+                        IdUnidadeNegocio = retorno.IdUnidadeNegocio,
+                        UnidadeNegocio = listUnidadeNegocio
                     };
 
                     return View("Edit", categoria);
@@ -100,7 +112,7 @@ namespace WebApiTcc.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return RedirectToAction("Index");
             }

@@ -20,9 +20,9 @@
         </div>
         <label asp-for="IdCategoria" class="col-md-2 control-label">Categoria</label>
         <div class="col-md-10">
-            <input asp-for="IdCategoria" class="form-control">
-            <span asp-validation-for="IdCategoria" class="text-danger" />
-            <label></label>
+            <select class="form-control" asp-for="IdCategoria" asp-items="@(new SelectList(Model.Categoria,"IdCategoria","Nome"))">
+                <option>Selecione</option>
+            </select>
         </div>
         <label asp-for="Ativo" class="col-md-2 control-label">Ativo</label>
         <div class="radio col-md-10">

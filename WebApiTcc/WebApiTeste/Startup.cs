@@ -5,6 +5,7 @@ using Data.Repository.Estacao;
 using Data.Repository.Home;
 using Data.Repository.Login;
 using Data.Repository.Produto;
+using Data.Repository.UnidadeNegocio;
 using Data.Services.Categoria;
 using Data.Services.ConsultaSatisfacao;
 using Data.Services.Emotion;
@@ -12,6 +13,7 @@ using Data.Services.Estacao;
 using Data.Services.Home;
 using Data.Services.Login;
 using Data.Services.Produto;
+using Data.Services.UnidadeNegocio;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -50,6 +52,8 @@ namespace WebApiTcc
             services.AddTransient<IEmotionService, EmotionService>();
             services.AddTransient<IConsultaSatisfacaoService, ConsultaSatisfacaoService>();
             services.AddTransient<IConsultaSatisfacaoRepository, ConsultaSatisfacaoRepository>();
+            services.AddTransient<IUnidadeNegocioService, UnidadeNegocioService>();
+            services.AddTransient<IUnidadeNegocioRepository, UnidadeNegocioRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

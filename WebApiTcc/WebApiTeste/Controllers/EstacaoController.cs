@@ -14,10 +14,12 @@ namespace WebApiTcc.Controllers
     public class EstacaoController : Controller
     {
         private readonly IEstacaoService _estacaoService;
+        private readonly IProdutoService _produtoService;
 
-        public EstacaoController(IEstacaoService estacaoService)
+        public EstacaoController(IEstacaoService estacaoService, IProdutoService produtoService)
         {
             _estacaoService = estacaoService;
+            _produtoService = produtoService;
         }
 
         public IActionResult Index()
@@ -51,7 +53,12 @@ namespace WebApiTcc.Controllers
 
         public IActionResult Create()
         {
-            return View("Create");
+            var listProduto = _produtoService.GetAll();
+            var estacao = new EstacaoViewModel()
+            {
+                Produto = listProduto
+            };
+            return View("Create", estacao);
         }
 
         public IActionResult Post(ProdutoViewModel produtoViewModel)
@@ -87,6 +94,7 @@ namespace WebApiTcc.Controllers
                 var retorno = _estacaoService.GetById(id);
                 if (retorno != null)
                 {
+                    var listProduto = _produtoService.GetAll();
                     var estacao = new EstacaoViewModel()
                     {
 
@@ -94,7 +102,8 @@ namespace WebApiTcc.Controllers
                         Nome = retorno.Nome,
                         Descricao = retorno.Descricao,
                         Ativo = retorno.Ativo,
-                        IdProduto = retorno.IdProduto
+                        IdProduto = retorno.IdProduto,
+                        Produto = listProduto
                     };
 
                     return View("Edit", estacao);

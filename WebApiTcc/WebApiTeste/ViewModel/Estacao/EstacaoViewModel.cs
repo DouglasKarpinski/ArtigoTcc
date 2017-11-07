@@ -16,5 +16,7 @@ namespace WebApiTcc.ViewModel.Estacao
         public string NomeProduto { get; set; }
 
         public ProdutoViewModel Produto { get; set; }
+
+        public IEnumerable<Data.Services.Produto.Produto> Produto { get; set; }
     }
 }

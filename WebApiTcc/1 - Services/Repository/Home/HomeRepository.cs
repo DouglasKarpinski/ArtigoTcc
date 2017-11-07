@@ -33,9 +33,6 @@ namespace Data.Repository.Home
                 dbConnection.Open();
                 return dbConnection.Query<Usuario>("SELECT * FROM [dbo].[Usuario]");
             }
-
-
-
         }
     }
 }
