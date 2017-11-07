@@ -23,12 +23,15 @@ namespace Data.Services.Emotion
             _consultaSatisfacaoRepository = consultaSatisfacaoRepository;
         }
 
-        public IList<Emotion> Demonstracao(string file)
+        public IList<Emotion> Demonstracao(string file, int? idEstacao)
         {
             if (string.IsNullOrEmpty(file))
                 throw new NullReferenceException("Você precisa informar o arquivo!");
 
-            var produtoEstacaoImagem = _consultaSatisfacaoRepository.Post(6, DateTime.Parse($"{DateTime.Now.Day}/{DateTime.Now.Month}/{DateTime.Now.Year}"));
+            var produtoEstacaoImagem = new ProdutoEstacaoImagem();
+
+            if (idEstacao.HasValue)
+                produtoEstacaoImagem = _consultaSatisfacaoRepository.Post(idEstacao.Value, DateTime.Parse($"{DateTime.Now.Day}/{DateTime.Now.Month}/{DateTime.Now.Year}"));
 
             var client = new HttpClient();
 
@@ -70,17 +73,20 @@ namespace Data.Services.Emotion
 
             var emotion = JsonConvert.DeserializeObject<IList<Emotion>>(responseContent);
 
-            var contentArquivo = JsonConvert.SerializeObject(new {IdProdutoEstacaoImagem = produtoEstacaoImagem.IdProdutoEstacaoImagem , Base64String = file });
-            var bufferArquivo = Encoding.UTF8.GetBytes(contentArquivo);
+            if (produtoEstacaoImagem.IdProdutoEstacaoImagem != 0)
+            {
+                var contentArquivo = JsonConvert.SerializeObject(new { IdProdutoEstacaoImagem = produtoEstacaoImagem.IdProdutoEstacaoImagem, Base64String = file });
+                var bufferArquivo = Encoding.UTF8.GetBytes(contentArquivo);
 
-            var byteContentArquivo = new ByteArrayContent(bufferArquivo);
+                var byteContentArquivo = new ByteArrayContent(bufferArquivo);
 
-            byteContentArquivo.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                byteContentArquivo.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-            var responseArquivo = client.PostAsync(_emotionWebApi + "postArquivo/arquivo", byteContentArquivo).Result;
+                var responseArquivo = client.PostAsync(_emotionWebApi + "postArquivo/arquivo", byteContentArquivo).Result;
 
-            if (!responseArquivo.IsSuccessStatusCode)
-                throw new HttpRequestException("Ops...............Algo errado aconteceu, verifique!");
+                if (!responseArquivo.IsSuccessStatusCode)
+                    throw new HttpRequestException("Ops...............Algo errado aconteceu, verifique!");
+            }
 
             return emotion;
         }

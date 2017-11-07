@@ -1,4 +1,5 @@
-﻿using Data.Repository;
+﻿using System.Globalization;
+using Data.Repository;
 using Data.Repository.Categoria;
 using Data.Repository.ConsultaSatisfacao;
 using Data.Repository.Estacao;
@@ -58,6 +59,11 @@ namespace WebApiTcc
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            var cultureInfo = new CultureInfo("pt-BR");
+
+            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

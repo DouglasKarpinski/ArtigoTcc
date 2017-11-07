@@ -6,6 +6,6 @@ namespace Data.Services.Emotion
 {
     public interface IEmotionService
     {
-        IList<Emotion> Demonstracao(string file);
+        IList<Emotion> Demonstracao(string file, int? idEstacao);
     }
 }

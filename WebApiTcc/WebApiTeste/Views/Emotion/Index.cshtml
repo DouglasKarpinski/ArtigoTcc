@@ -1,4 +1,9 @@
-﻿@{ViewData["Title"] = "Demonstração";}
+﻿@model IEnumerable<WebApiTcc.ViewModel.Estacao.EstacaoViewModel>
+
+@{
+    ViewData["Title"] = "Demonstração";
+}
+
 <div style="text-align: center;"><h2>@ViewData["Title"]</h2></div>
 
 <div class="table table-responsive">
@@ -10,18 +15,27 @@
             <br/><br/>
             <label class="col-sm-6"></label>
             <div>
-                <div class="col-md-10">
+                <div class="col-md-10 form-group">
                     <label class="col-sm-7"></label>
                     <input type="button" id="btnCapturar" value="Capturar" class="btn btn-primary">
                 </div>
             </div>
-            <div class="col-sm-12 form-group" style="margin-top: 30px">
+            <div class="col-sm-12 form-group">
                 <div class="form-group col-sm-12">
-                    <label class="col-sm-2"></label>
-                    <div class="col-sm-6" style="margin-left: 55px">
+                    <div class="col-sm-6 col-sm-offset-3 form-group" style="">
                         <label>Você também pode escolher a imagem, se preferir</label>
-                        <input type="file" accept=".jpg, .jpeg, .png" id="file"/>
-                        <input type="hidden" id="arquivo" name="file"/>
+                        <input type="file" accept=".jpg, .jpeg, .png" id="file">
+                        <input type="hidden" id="arquivo" name="file">
+                    </div>
+                    <div class="col-sm-6 col-sm-offset-3 form-group" style="">
+                        <label>Estação</label>
+                        <select class="form-control" id="ddlEstacao">
+                            <option value="">Selecione</option>
+                            @foreach (var item in Model)
+                            {
+                                <option value="@item.IdEstacao">@item.Nome</option>
+                            }
+                        </select>
                     </div>
                 </div>
             </div>
@@ -100,7 +114,8 @@
         $("#btnEnviar").click(function() {
             $.post('@Url.Action("PostDemonstration")',
                 {
-                    file: $("#arquivo").val()
+                    file: $("#arquivo").val(),
+                    idEstacao: $("#ddlEstacao").val()
                 }).done(function (data) {
                 $("#divDemonstracao").slideUp(200);
                 $("#divResultado").html(data).slideDown(200, function() {
